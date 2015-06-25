@@ -1,0 +1,775 @@
+MAPPING-PREFIX = &;
+#DELIMITERS = "<DELIM>";
+DELIMITERS = "<$?>"<PUNT_GALD>" "<$.>"<PUNT_PUNT>" "<$.>" "<.>"<PUNT_PUNT>";
+PARENTHESES = ("<(>" "<)>") ("<{>" "<}>") ("<[>" "<]>");
+
+#SETS
+##################################################################################
+#                             AURREKO DEFINIZIOAK                                #
+##################################################################################
+
+#SETS
+##################################################################################
+#                               DEFINIZIO BERRIAK                                #
+##################################################################################
+
+
+#SETS
+##################################################################################
+#                       DEFINIZIO BERRIAK (BUKAERA)                              #
+##################################################################################
+
+SECTION
+
+##################################################################################
+#                       Definitions Patterns (Start)                        #
+##################################################################################
+
+
+#MAP (&PROBA_KOMA) (PUNT_KOMA);
+
+# DEF-1
+# Pattern: is|are (adverb) + called|known|as|defined as + @ONT-TOPIC
+##
+# Example (D1): The whole set of celestial bodies and space they
+### 
+###
+### 
+
+
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that")) (NEGATE -1 ("this"))  (1 ("called" VBN));
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RB) LINK 1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBS) LINK 1 ("called" VBN) );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBR) LINK 1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RB) LINK 1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBS) LINK 1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBR) LINK 1 ("known" VBN) );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 ("as" RB)  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RB) LINK 1 ("<as>")   );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBR) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBS) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RB) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBS) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("is" VBZ) IF (NEGATE -1 ("that"))(NEGATE -1 ("this")) (1 (RBR) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RB) LINK 1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBR) LINK 1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBS) LINK 1 ("called" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RB) LINK 1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBR) LINK 1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBS) LINK 1 ("known" VBN)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 ("as" RB) LINK 1 (RB)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RB) LINK 1 ("<as>") LINK 1 (RBR)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBS) LINK 1 ("<as>") LINK 1 (RBS)  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBR) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RB) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBR) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+MAP:DEF-1 (&DEF) ("are" VBP) IF (NEGATE -1 ("that")) (NEGATE -1 ("this")) (1 (RBS) LINK 1 ("defined" VBN) LINK 1 ("<as>")  );
+
+
+
+# DEF-2
+# Pattern: @ONT-TOPIC + is|are + determiner
+##
+# Example: (D2): Galaxies are sets of millions of stars
+###
+##We map def on ont-topic if the next item is is|are linked with a determiner 
+
+MAP:DEF-2 (&DEF) TARGET ("is" VBZ) IF (NEGATE -1 (IN)) (NEGATE -1 (EX)) (NEGATE -1 (PRP)) (0 ("is" VBZ) LINK 1 (DT));
+MAP:DEF-2 (&DEF) TARGET ("are" VBP) IF (NEGATE -1 (IN)) (NEGATE -1 (EX)) (NEGATE -1 (PRP)) (0 ("are" VBP) LINK 1 (DT));
+
+
+# DEF-3
+# Pattern: @ONT-TOPIC + refers to| refer to| satisfies| satisfy +...
+##
+# Example (D3): Java refers to a programming language. 
+###
+
+MAP:DEF-3 (&DEF) TARGET ("refers" VBZ) IF (0 ("refers" VBZ) LINK 1 ("<to>"));
+MAP:DEF-3 (&DEF) TARGET ("refer" VBP) IF (0 ("refer" VBP) LINK 1 ("<to>"));
+MAP:DEF-3 (&DEF) TARGET ("satisfies" VBZ) IF (0 ("satisfies" VBZ));
+MAP:DEF-3 (&DEF) TARGET ("satisfy" VBP) IF (0 ("satisfy" VBP));
+
+
+# DEF-4
+# Pattern: @ont-topic + is|are [adverb] + being used to| used to|referred to|employed to|defined as|formalized as|formalised as|described 
+##           as|concerned with|called
+# Pattern: @ont-topic + is|are [adverb] + being used to| used to|referred to|employed to|defined as|formalized as|formalised as|described 
+##           as|concerned with|called
+##
+# Example (D5): Nebula is defined as the inter-stellar cloud of dust, hydrogen gas and plasma.
+###
+# here we negate because there is another rule for that case
+
+
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RB) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("<defined>") LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 ("<defined>") LINK 1 ("<as>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (NEGATE -1  (PRP)) (0 ("is" VBZ) LINK 1 (RB) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (NEGATE -1  (PRP)) (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (NEGATE -1  (PRP)) (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("<used>") LINK 1 ( "<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (NEGATE -1  (PRP)) (0 ("is" VBZ) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (NEGATE -1  (PRP)) (0 ("are" VBP) LINK 1 (RB) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (NEGATE -1  (PRP)) (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (NEGATE -1  (PRP)) (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (NEGATE -1  (PRP)) (0 ("are" VBP) LINK 1 ("<used>") LINK 1 ("<to>"));
+
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RB) LINK 1 ("<being>") LINK 1 ("<used>")  LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("<being>") LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("<being>") LINK 1 ("<used>") LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF (0 ("is" VBZ) LINK 1 ("<being>") LINK 1 ("<used>") LINK 1 ("<to>")); 
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RB) LINK 1 ("<being>") LINK 1 ("<used>")   LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("<being>") LINK 1 ("<used>")  LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("<being>")  LINK 1 ("<used>")  LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("are" VBP) IF (0 ("are" VBP) LINK 1 ("<being>") LINK 1 ("<used>")  LINK 1 ("<to>"));
+
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("use" VBN ) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("use" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("use" VBN) LINK 1 ("<to>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("refer" VBN) LINK 1 ("<to>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("employed" VBN) LINK 1 ("<to>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("formalized" VBN) LINK 1 ("<as>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("described" VBN) LINK 1 ("<as>"));
+
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("concerned" VBN) LINK 1 ("<with>"));
+
+MAP:DEF-4 (&DEF) ("are" VBP) IF  (0 ("are" VBP) LINK 1 ("called" VBN));
+MAP:DEF-4 (&DEF) ("are" VBP) IF  (0 ("are" VBP) LINK 1 (RB)  LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("are" VBP) IF  (0 ("are" VBP) LINK 1 (RBS) LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("are" VBP) IF  (0 ("are" VBP) LINK 1 (RBR) LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RB)  LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBS) LINK 1 ("called" VBN) );
+MAP:DEF-4 (&DEF) ("is" VBZ) IF  (0 ("is" VBZ) LINK 1 (RBR) LINK 1 ("called" VBN) );
+
+
+
+
+
+
+
+
+# DEF-8
+# Patroia:@ONT-TOPIC + ,i.e. + defining text
+##
+# Example (D8): Nearly half of the galaxies are spiral , i.e. consist of a rotating disk of stars.
+###
+
+MAP:DEF-6 (&DEF) ("," Fc) IF (0  ("," Fc) LINK 1 ("i.e." ));
+
+
+
+
+
+# DEF-11
+# Patroia:What {is|are} [determiner ] {concept}?
+##
+# Example (D11): But,what are those astronomical observatories?
+###
+
+MAP:DEF-7(&DEF) TARGET ("what" WP) IF  (NEGATE -2 ("to"))  (1  ("are" VBP) LINK 1 (DT) );
+MAP:DEF-7(&DEF) TARGET ("what" WP) IF  (NEGATE -2 ("to"))  (1  ("is" VBZ) LINK 1 (DT)) ;
+MAP:DEF-7(&DEF) TARGET ("what" WP) IF  (NEGATE -2 ("to"))  (1  ("are" VBP)) ;
+MAP:DEF-7(&DEF) TARGET ("what" WP) IF  (NEGATE -2 ("to"))  (1  ("is" VBZ)) ;
+
+
+
+
+
+
+
+
+
+
+# DEF-15
+# Patroia:{definition} {:} {concept}
+##
+# Example (D15): At these points in the lunar cycle, the tide\EDs range is minimum: neap tide 
+###
+
+#MAP:DEF-15(&DEF) TARGET (":" Fd) IF (1 (@ONT-TOPIC));
+
+
+
+
+# DEF-16
+# Patroia: {definition} [of ] {concept} {-|:} . . .
+##
+# Example (D16): Thus, this is the common definition of the matter: anything which both occupies
+#space and has mass.
+###
+
+
+MAP:DEF-16(&DEF) TARGET ("definition" NN ) IF (1 ("of" IN ) LINK 1 (@ONT-TOPIC) LINK 1 (":"));
+MAP:DEF-16(&DEF) TARGET ("definition" NN ) IF (1 (@ONT-TOPIC) LINK 1 (":"));
+MAP:DEF-16(&DEF) TARGET ("definition" NN ) IF (1 (@ONT-TOPIC) LINK 1 ("-"));
+MAP:DEF-16(&DEF) TARGET ("definition" NN ) IF (1 ("of" IN ) LINK 1 (@ONT-TOPIC) LINK 1 ("-"));
+
+
+
+# DEF-17
+# Patroia: {is} {concept}{\EDs {-|:} . . . [determiner ] definition}
+##
+# Example (D17): Thus, this is the common matter\EDs definition: any-thing which both occupies space and has mass.
+###
+
+
+MAP:DEF-17(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 (DT) LINK 1 ("definition" NN) LINK 1 (":" Fd));
+MAP:DEF-17(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 ("definition" NN) LINK 1 (":" Fd));
+MAP:DEF-17(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 (DT) LINK 1 ("definition" NN) LINK 1 ("-"));
+MAP:DEF-17(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 ("definition" NN) LINK 1 ("-"));
+
+
+
+
+# DEF-18
+# Patroia: {is} {concept}{\EDs {-|:} . . . [determiner ] definition}
+##
+# Example (D18): Thus, this is the common matter\EDs definition: any-thing which both occupies space and has mass.
+###
+
+
+MAP:DEF-18(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 (DT) LINK 1 ("definition" NN) LINK 1 (":" Fd));
+MAP:DEF-18(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 ("definition" NN) LINK 1 (":" Fd));
+MAP:DEF-18(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 (DT) LINK 1 ("definition" NN) LINK 1 ("-"));
+MAP:DEF-18(&DEF) TARGET ("is" VBZ) IF (1 (@ONT-TOPIC) LINK 1 ("'s" POS) LINK 1 ("definition" NN) LINK 1 ("-"));
+
+
+
+# DEF-19
+# Patroia: {To} {Express|Describe|Define} {what} {is|are} [determiner ] {concept}
+##
+# Example (D19): Has mass To define what is an Atom, you can consider that it is the smallest indivisible part of
+#matter.
+###
+
+
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("define" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("express" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("describe" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("define" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (@ONT-TOPIC));
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("express" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (@ONT-TOPIC));
+MAP:DEF-19(&DEF) TARGET ("to" NNP) IF (1 ("describe" VB) LINK 1 ("what" WP) LINK 1 ("is" VBZ) LINK 1 (@ONT-TOPIC));
+
+
+
+
+
+# DEF-20
+# Patroia: {concept} {-|:} {definition}
+##
+# Example (D20): Atmosphere: a layer of gases that may surround a material body of sufficient mass. 
+###
+
+
+MAP:DEF-20(&DEF) TARGET (@ONT-TOPIC) IF (1 (":"));
+
+
+# DEF-12
+# Patroia: {definition} {or} {Concept}
+##
+# Example (D12): The Earth is divided in 24 parts or time zones.
+###
+#MAP:DEF-12(&DEF) TARGET ("or" CC) IF (-1 NEGATE (VB)) (-1 NEGATE (VBP)) (-1 NEGATE (VBG)); 
+
+
+
+
+
+# DEF-7
+# Patroia: text + called + @ONT-TOPIC
+##
+# Example (D7): Besides, Galaxies can be found as aggregated set of celestial bodies called cumulus.
+###
+#MAP:DEF-7 (&DEF) TARGET ("called" VBN) IF  (NEGATE -2 ("that")) (NEGATE -2 ("this"))(0 ("called" VBN) LINK 1 (@ONT-TOPIC ));
+
+
+
+# DEF-4
+# Pattern: @ONT-TOPIC + , ........... , .......
+##
+# Example (D4): Comets, light tailed celestial bodies , have been knows for ages.
+###
+# here we negate because there is another rule for that case
+
+#MAP:DEF-4 (&DEF) TARGET ("<,>") IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 ("<,>")) (-1 (@ONT-TOPIC))  (*1 ("<,>") LINK *1 (VB)); 
+#MAP:DEF-4 (&DEF) TARGET ("<,>") IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 ("<,>")) (-1 (@ONT-TOPIC))  (*1 ("<,>") LINK *1 (VBN)); 
+#MAP:DEF-4 (&DEF) TARGET ("<,>") IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 ("<,>")) (-1 (@ONT-TOPIC))  (*1 ("<,>") LINK *1 (VBG)); 
+#MAP:DEF-4 (&DEF) TARGET ("<,>") IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 ("<,>")) (-1 (@ONT-TOPIC))  (*1 ("<,>") LINK *1 (VBZ)); 
+#MAP:DEF-4 (&DEF) TARGET ("<,>") IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 ("<,>")) (-1 (@ONT-TOPIC))  (*1 ("<,>") LINK *1 (VBP)); 
+
+## M.L Example:MAP:DEF-4 (&DEF) TARGET (PUNT_KOMA) IF (NEGATE -1 (@ONT-TOPIC) LINK *-1 PUNT_KOMA) (NEGATE **1 (PUNT_KOMA) LINK *-1 (LOT))(-1 (ABS @ONT-TOPIC)) (*1 (PUNT_KOMA) LINK *1 (ADI))(NOT *-1 (ADREILU)) (NOT *-1 (OSAGAI)) (NOT 1 (HAU)) (NOT 2 (IZAN)); ## LEHENENGOAN JARRIKO DU MARKA	
+
+
+# DEF-14
+# Patroia:{concept} {(}{definition}{)}
+##
+# Example (D14): In reference to  the Ecliptical orbit ( the plane of the orbit the Earth makes around the Sun ).
+###
+
+#MAP:DEF-14(&DEF) TARGET (@ONT-TOPIC) IF (1 ("(" Fpa ) LINK *1 (")" Fpt));
+
+
+# DEF-21
+# Patroia: {definition}. + {This|That} {is} {called} + {concept}
+##
+# Example (D21): That is called the Green House Effect.
+###
+
+MAP:DEF-34(&DEF) TARGET ("this" DT) IF (1 ("is" VBZ) LINK 1 ("called" VBN) );
+MAP:DEF-34(&DEF) TARGET ("that" DT) IF (1 ("is" VBZ) LINK 1 ("called" VBN) );
+
+
+# DEF-9
+# Patroia:@ONT-TOPIC = description
+##
+# Example (D9): 1 Astronomical Unit (AU) = 149.579.870 km 
+
+###
+
+#MAP:DEF-9 (&DEF) (@ONT-TOPIC) IF (1  ("=" Fz));
+
+
+# DEF-10
+# Patroia:Describing text , @ONT-TOPIC , other text
+##
+# Example (D10):However, the time each planet takes to make its complete orbit, Java, depends
+#on the distance to the sun.
+###
+
+#MAP:DEF-7(&DEF) TARGET ("<,>") IF (1  (@ONT-TOPIC) LINK 1 ("<,>"));
+
+
+# DEF-13
+# Patroia: {definition} {or} {Concept}
+##
+# Example (D12): The Earth is divided in 24 parts or time zones.
+###
+
+#MAP:DEF-13(&DEF) TARGET ("or" CC) IF (1 (@ONT-TOPIC));
+
+
+
+##################################################################################
+#                       Definitions Patterns (End)                               #
+##################################################################################
+
+
+
+
+##################################################################################
+#                       Examples Patterns (Start)                               #
+##################################################################################
+
+
+# ADIB-1
+# Pattern: {example|instance|case|illustration|sample|specimen} [of] {concept}
+##
+# Example(ADIB1):
+###
+
+MAP:ADIB-1 (&ADIB) TARGET ("example" NN ) IF (1 ("of" IN));
+MAP:ADIB-1 (&ADIB) TARGET ("instance" NN) IF (1 ("of" IN));
+MAP:ADIB-1 (&ADIB) TARGET ("case" NN ) IF (1 ("of" IN));
+MAP:ADIB-1 (&ADIB) TARGET ("illustration" NN ) IF (1 ("of" IN) );
+MAP:ADIB-1 (&ADIB) TARGET ("sample" NN ) IF (1 ("of" IN));
+MAP:ADIB-1 (&ADIB) TARGET ("specimen" NN ) IF (1 ("of" IN));
+
+
+
+
+
+# ADIB-2
+# Pattern: {for instance|e.g.| for example|as an example} [,] [determiner] {concept} . . .
+##
+# Example(ADIB2):
+###
+
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 ("," Fc) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 ("," Fc) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-2 (&ADIB) TARGET ("for_example" RB ) IF (1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_example" RB ) IF (1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_example" RB ) IF (1 ("," Fc) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_example" RB ) IF (1 ("," Fc) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 ("," Fc) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-2 (&ADIB) TARGET ("for_instance" RB ) IF (1 ("," Fc) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+
+
+# ADIB-3
+# Pattern:{concept} {illustrates|demonstrates|shows|exemplifies} . . .
+##
+# Example(ADIB3):
+###
+
+MAP:ADIB-3 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("illustrate" VBZ));
+MAP:ADIB-3 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("demostrate" VBZ));
+MAP:ADIB-3 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("show" VBZ));
+MAP:ADIB-3 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("exemplify" VBZ));
+
+
+
+# ADIB-4
+# Pattern: {concept} {is|are} [adverb] {illustrated by|demonstrated by|shown by} . . .
+##
+# Example(ADIB4):
+###
+
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RB) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RB) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBS) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBS) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBR) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBR) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("illustrate" VBN) LINK 1 ("by" RB ));
+
+
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RB) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RB) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBS) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBS) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBR) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBR) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("show" VBN) LINK 1 ("by" RB ));
+
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RB) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RB) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBS) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBS) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 (RBR) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 (RBR) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+MAP:ADIB-4 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("demostrate" VBN) LINK 1 ("by" RB ));
+
+
+# ADIB-5
+# Pattern: . . .{Example} {-|:} {example}
+##
+# Example(ADIB5):
+###
+
+MAP:ADIB-5 (&ADIB) TARGET ("example" NN) IF (0 ("example" NN) LINK 1 (":" Fd ));
+
+
+# ADIB-6
+# Pattern: {concept} {is/ some of}  {concept} one of|are [determiner ]
+##
+# Example(ADIB6):
+###
+
+MAP:ADIB-6 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("one" DT) LINK 1 ("of" IN ) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-6 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("one" DT) LINK 1 ("of" IN ) LINK 1  (DT) LINK 1(@ONT-TOPIC));
+
+
+MAP:ADIB-6 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("some") LINK 1 ("of" IN ) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-6 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("some") LINK 1 ("of" IN ) LINK 1 (DT) LINK 1(@ONT-TOPIC));
+
+
+# ADIB-7
+# Pattern: {Some} {concept} {:} + {list of topics}
+##
+# Example(ADIB7): 
+###
+
+MAP:ADIB-7 (&ADIB) TARGET ("some" DT) IF (1 (@ONT-TOPIC) LINK 1 (":" Fd));
+
+
+# ADIB-8
+# Pattern: {concept} {is|are|has been|have been|can be} {mentioned among} [determiner ] {concept}
+##
+# Example(ADIB8):Peugeot has been mentioned among the best cars in October
+###
+
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("can" VB) LINK 1 ("be" VB) LINK 1("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("can" VB) LINK 1 ("be" VB) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("have" VB) LINK 1 ("be" VBN) LINK 1("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("have" VB) LINK 1 ("be" VBN) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("has" VBZ) LINK 1  ("be" VBN) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+MAP:ADIB-8 (&ADIB) TARGET (@ONT-TOPIC) IF (1 ("has" VBZ) LINK 1  ("be" VBN) LINK 1 ("mention" VBN) LINK 1 ("among" IN ) LINK 1 (DT) LINK 1 (@ONT-TOPIC));
+
+
+##################################################################################
+#                       Examples Patterns (End)                               #
+##################################################################################
+
+
+
+
+
+##################################################################################
+#                       Fact Patterns (Start)                               #
+##################################################################################
+
+# FACT-1
+# Pattern:{Some} {concept} {:} + {list of topics}
+##
+# Example(FACT-1):  1957 : Sputnik I, was launched to orbit the Earth.
+### FREELING Doesn't have this kind of information
+
+
+##MAP:FACT-1 (&FACT) TARGET ();
+
+
+##################################################################################
+#                       Fact Patterns (End)                               #
+##################################################################################
+
+
+
+
+##################################################################################
+#                        Principle-Statements Patterns (Start)                  #
+##################################################################################
+
+
+# OD-1
+# Pattern:{concept} {is|are} {based on} {description}
+##
+# Example(OD-1): Many of the phenomena in Earth, e.g. the day, the night, eclipses and tides, are
+#based on such movements. The Moon makes ...
+#
+###
+
+MAP:OD-1 (&OD) TARGET (@ONT-TOPIC) IF (1* ("is" VBZ) LINK 1 ("base" VBN) LINK 1("on"));
+MAP:OD-1 (&OD) TARGET (@ONT-TOPIC) IF (1* ("are" VBP) LINK 1 ("base" VBN) LINK 1("on"));
+
+
+
+# OD-2
+# Pattern: {Description} {:} [determiner ] {consequence of that is|consequences of that are}
+##
+# Example(OD-2):(the orbital period): The most popular consequences of that are the the tides, eclipses and the lu-
+#nar phases.
+#
+###
+
+MAP:OD-2 (&OD) TARGET (":" Fd) IF (1* ("consequence" NNS) LINK 1 ("of") LINK 1("that") LINK 1 ("are" VBP));
+MAP:OD-2 (&OD) TARGET (":" Fd) IF (1* ("consequence" ) LINK 1 ("of") LINK 1("that") LINK 1 ("is" VBZ));
+
+
+
+# OD-3
+# Pattern:{is|are} {due to| caused by}
+##
+# Example(OD-3): Lunar Phases are caused by the orbital movement of the Moon around the Earth.
+#
+###
+
+MAP:OD-3 (&OD) TARGET (@ONT-TOPIC) IF (1  ("are" VBP) LINK 1 ("cause" VBN) LINK 1 ("by") LINK 1* (@ONT-TOPIC));
+MAP:OD-3 (&OD) TARGET (@ONT-TOPIC) IF (1  ("is" VBZ) LINK 1 ("cause" VBN) LINK 1 ("by")  LINK 1* (@ONT-TOPIC));
+MAP:OD-3 (&OD) TARGET (@ONT-TOPIC) IF (1  ("is" VBZ) LINK 1 ("due") LINK 1 ("to")  LINK 1* (@ONT-TOPIC));
+MAP:OD-3 (&OD) TARGET (@ONT-TOPIC) IF (1  ("are" VBP) LINK 1 ("due") LINK 1("to")  LINK 1* (@ONT-TOPIC));
+
+
+# OD-4
+# Pattern:{is|are} {initiated by}
+##
+# Example(OD-4): Earth\EDs ocean tides are initiated by the tidal force.
+#
+###
+
+MAP:OD-4 (&OD) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("initiate") LINK 1("by"));
+MAP:OD-4 (&OD) TARGET (@ONT-TOPIC) IF (1 ("are" VBP) LINK 1 ("initiate") LINK 1("by"));
+MAP:OD-4 (&OD) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("initiate") LINK 1("by"));
+MAP:OD-4 (&OD) TARGET (@ONT-TOPIC) IF (1 ("is" VBZ) LINK 1 ("initiate") LINK 1("by"));
+
+
+
+# OD-5
+# Pattern:{concept} {due to|caused by|because of|because}
+##
+# Example(OD-5):  The gravitational tidal force arises because the side of Earth facing the Moon. 
+#
+###
+
+MAP:OD-5 (&OD) TARGET (@ONT-TOPIC) IF (1 ("because")) ;
+MAP:OD-5 (&OD) TARGET (@ONT-TOPIC) IF (1 ("because") LINK 1 ("of"))  ;
+MAP:OD-5 (&OD) TARGET (@ONT-TOPIC) IF (1 ("cause") LINK 1 ("by"))  ;
+MAP:OD-5 (&OD) TARGET (@ONT-TOPIC) IF (1 ("due") LINK 1 ("to"))  ;
+
+
+# OD-6
+# Pattern:{has|have} [determiner ] {consequence|consequences}
+##
+# Example(OD-6): The axial tilt of the Earth has another consequence: the length of the day and the night
+#is not the same along the year. 
+#
+###
+
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBZ) LINK 1 (DT)) ;
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBP) LINK 1 (DT)) ;
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBZ) LINK 1 (DT)  LINK 1 ("consequence" NN) );
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBZ) LINK 1 (DT)  LINK 1 ("consequence" NN) );
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBZ) LINK 1 (DT)  LINK 1 ("consequence" NNS)) ;
+MAP:OD-6 (&OD) TARGET (@ONT-TOPIC) IF (1* ("have" VBZ) LINK 1 (DT)  LINK 1 ("consequence" NNS)) ;
+
+
+# OD-7
+# Pattern:{produce|producing|generate|generating|cause|causing| induce|inducing}
+##
+# Example(OD-7):  its orbital plane, producing seasonal variations
+#
+###
+
+
+MAP:OD-7 (&OD) TARGET ("produce" VBG) IF (*-1 (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("produce" VBG) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("produce" VBP) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("produce" VBP) IF (*-1 (@ONT-TOPIC));
+
+MAP:OD-7 (&OD) TARGET ("generate" VBP) IF (*-1 (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("generate" VBP) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("generate" VBG) IF (*-1 (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("generate" VBG) IF (1* (@ONT-TOPIC));
+
+
+MAP:OD-7 (&OD) TARGET ("cause" VBP) IF (*-1 (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("cause" VBP) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("cause" VBG) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("cause" VBG) IF (*-1 (@ONT-TOPIC));
+
+
+MAP:OD-7 (&OD) TARGET ("induce" VBP) IF (*-1 (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("induce" VBP) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("induce" VBG) IF (1* (@ONT-TOPIC));
+MAP:OD-7 (&OD) TARGET ("induce" VBG) IF (*-1 (@ONT-TOPIC));
+
+
+
+
+# OD-8
+# Pattern:{why|how} . . . {?}
+##
+# Example(OD-8): 
+#
+###
+
+MAP:OD-8 (&OD) TARGET ("why" WRB) IF (*1 (@ONT-TOPIC) LINK 1* ("?" Fit));
+MAP:OD-8 (&OD) TARGET ("how" WRB) IF (*1 (@ONT-TOPIC) LINK 1* ("?" Fit));
+
+
+
+# OD-9
+# Pattern:{happen|happens|can happen|occur|occurs| can occur}. . .
+##
+# Example(OD-1): Eclipses can occur only when the Sun, Earth, and Moon are
+#all in a straight line.
+#
+###
+
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("happen" VBP));
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("happen" VBZ));
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("can" MD) LINK 1("happen" VB));
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("occur" VBP));
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("occur" VBZ));
+MAP:OD-9 (&OD) TARGET (@ONT-TOPIC) IF (1 ("can" MD) LINK 1("occur" VB));
+
+# OD-10
+# Pattern: {Principle}
+##
+# Example(OD-1): 
+#
+###
+MAP:OD-10 (&OD) TARGET ("principle" NN) IF (*1 (@ONT-TOPIC));
+
+
+##################################################################################
+#                         Principle-Statements Patterns (End)                    #
+##################################################################################
+
+ 
+
+
+
+##################################################################################
+#                        Theories or Theorems Patterns (Start)                  #
+##################################################################################
+
+# TEOR-1
+# Pattern:{Theory|Theories|Theorem|Theorems}
+##
+# Example():
+###
+MAP:TEOR-1 (&TEOR) TARGET ("theory" NN) IF (*1 (@ONT-TOPIC));
+MAP:TEOR-1 (&TEOR) TARGET ("theory" NNS) IF (*1 (@ONT-TOPIC));
+MAP:TEOR-1 (&TEOR) TARGET ("theorem" NN) IF (*1 (@ONT-TOPIC));
+MAP:TEOR-1 (&TEOR) TARGET ("theorems"NNS ) IF (*1 (@ONT-TOPIC));
+
+
+##################################################################################
+#                         Theories or Theorems Patterns (End)                    #
+##################################################################################
+

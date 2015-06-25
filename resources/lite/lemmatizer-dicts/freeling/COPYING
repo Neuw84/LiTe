@@ -1,0 +1,8 @@
+
+
+The English and Spanish dictionaries contained in this tarball have been prepared from the dictionaries distributed by Freeling 3.0:  
+
+- Spanish dictionary contained in the files in data/es/dictionary of the freeling 3.0 source tarball (http://devel.cpl.upc.edu/freeling/downloads/21) is extracted from the Spanish Resource Grammar projects (http://www.upf.edu/pdi/iula/montserrat.marimon/srg.html) and was developed at the Institut Universitari de Linguistica Aplicada (http://www.iula.upf.edu) of the Universitat Pompeu Fabra. It is distributed under a "Lesser General Public License For Linguistic Resources" license. You'll find the license in the file LICENSES/LGPLLR.license included in this package or at http://sanskrit.inria.fr/DATA/LGPLLR.html
+
+- The English dictionary in this freeling 3.0 source tarball is distributed under GNU General Public License (GPLv3) and copyrighted by Universitat Politècnica de Catalunya.You can find a copy of GPL license in the file LICENSE.txt included in this package, or at http://www.gnu.org/licenses/gpl
+
