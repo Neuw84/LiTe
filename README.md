@@ -24,11 +24,17 @@ For the Disambiguation and Linker part: the [Wikiminer](http://www.sciencedirect
 
 License: GPL V2
 
-
-
 ###TODO's
 ...
 
+###Contact information
+````shell
+Angel Conde
+Galan Research Group
+University of the Basque Country (UPV/EHU)
+E-20018 Donostia-San Sebastián
+angel.conde@ehu.eus
+````
 
 
 
