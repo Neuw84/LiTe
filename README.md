@@ -26,6 +26,7 @@ License: GPL V2
 
 ###TODO's
 - Integrate IXA-PIPEs to only depend on OPEN-NLP Library (reduce the POM size)
+
 ###Contact information
 ````shell
 Angel Conde
