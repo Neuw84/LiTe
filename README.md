@@ -21,6 +21,10 @@ LiTe main aim is to extract terms from texts and link/disambiguate them to Wikip
 
 For the Disambiguation and Linker part: the [Wikiminer](http://www.sciencedirect.com/science/article/pii/S000437021200077X) is used. 
 
+License: GPL V2
+
+
+
 ###TODO's
 ...
 
