@@ -38,7 +38,6 @@
 /results:textAstronomy
 /textProgramming_1
 /tmp/
-/testCorpus/
 /spanishCorpus/
 /results/
 /resultsDisam/
@@ -55,3 +54,4 @@
 /src/test/java/edu/ehu/galan/lite/WikiTerm.java
 /src/test/java/edu/ehu/galan/lite/pruebas.java
 /src/test/java/edu/ehu/galan/lite/EvalSingleAlgorithm.java
+/testCorpus/textProgramming

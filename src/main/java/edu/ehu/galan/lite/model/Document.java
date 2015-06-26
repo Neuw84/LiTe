@@ -101,6 +101,7 @@ public class Document {
         name = pName;
         topicList = new ArrayList<>();
         domainTopics = new HashMap<>();
+        termList = new ArrayList<>();
         source = SourceType.wikipedia;
     }
     

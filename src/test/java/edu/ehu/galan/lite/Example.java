@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package edu.ehu.galan.lite;
 
 import edu.ehu.galan.lite.algorithms.ranked.supervised.tfidf.TFIDFAlgorithm;
@@ -92,7 +91,7 @@ public class Example {
 
         } catch (IOException e1x) {
             Logger.getLogger(WikiTerm.class.getName()).log(Level.SEVERE, null, e1x);
-        }        
+        }
         //initialize Wikiminer helper (class that interacts with Wikiminer services)
         WikiminnerHelper helper = WikiminnerHelper.getInstance(resources);
         helper.setLanguage("en");
@@ -106,6 +105,7 @@ public class Example {
         //process all the documents in the corpus
         while (!corpus.getDocQueue().isEmpty()) {
             Document doc = corpus.getDocQueue().poll();
+            doc.setSource(Document.SourceType.wikipedia);
             parser.readSource(doc.getPath());
             doc.setSentenceList(parser.getSentenceList());
             doc.setTokenList(parser.getTokenizedSentenceList());
