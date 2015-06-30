@@ -16,6 +16,7 @@ package edu.ehu.galan.lite.algorithms.ranked.supervised.tfidf;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import com.google.common.base.Charsets;
 import edu.ehu.galan.lite.algorithms.AbstractAlgorithm;
 import edu.ehu.galan.lite.model.Term;
 import edu.ehu.galan.lite.model.Document;
@@ -33,9 +34,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The tfidf Algorithms needs a corpus to be created, see the package corpus for examples,
@@ -43,7 +45,7 @@ import java.util.stream.Collectors;
  * @author Angel Conde Manjon
  */
 public class TFIDFAlgorithm extends AbstractAlgorithm {
-    
+
     private List<Term> termList;
     private Document doc;
     private IStemmer stemmer;
@@ -53,6 +55,7 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
     private List<TFIDFTerm> tfTermList;
     private String lang;
     private String propsDir;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * The TFIDF algorithm takes a corpus where the terms will be extracted and a stemmer that will
@@ -70,21 +73,21 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
         tfTermList = new ArrayList<>();
         lang = pLang;
     }
-    
+
     @Override
     public void init(Document pDoc, String pPropsDir) {
         setDoc(pDoc);
-        propsDir = pPropsDir;        
+        propsDir = pPropsDir;
         props = new Properties();
         try {
             props.load(new FileInputStream(pPropsDir + "lite/configs/general.conf"));
         } catch (IOException ex) {
-            Logger.getLogger(TFIDFAlgorithm.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("check your resources directory", ex);
         }
         super.setProperties(props);
-        
+
     }
-    
+
     @Override
     public void runAlgorithm() {
         tfTermList.clear();
@@ -94,7 +97,7 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
             tfTermList.add(new TFIDFTerm(w.word, w.count));
         }
         method.setCorpusData(numTotalWords, tfTermList);
-        method.computeTFIDF(tfTermList, numTotalWords);        
+        method.computeTFIDF(tfTermList, numTotalWords);
         List<Term> terms = tfTermList.parallelStream().filter(t -> t.tfidf != -1).map(t -> new Term(t.word.trim(), (float) t.tfidf)).sorted((t1, t2) -> t1.getScore() > t2.getScore() ? -1 : t1.getScore() == t2.getScore() ? 0 : 1).collect(Collectors.toList());
         tfTermList.clear(); //memory leak if we do not clean here
         getDoc().addListTerm(new ListTerm(this.getName(), terms));
@@ -114,10 +117,10 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
     public void setStemmer(IStemmer stemmer) {
         this.stemmer = stemmer;
     }
-    
+
     public void printCorpusData() {
         Collections.sort(wordList);
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(props.getProperty("tmpDir") + "/tfCorpusData"), Charset.defaultCharset())) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(props.getProperty("tmpDir") + "/tfCorpusData"), Charsets.UTF_8)) {
             writer.append(Integer.toString(numTotalWords));
             writer.newLine();
             for (Word wor : wordList) {
@@ -131,7 +134,7 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
             System.out.println("Error writing to file");
         }
     }
-    
+
     private void extractCorpusData() {
         List<LinkedList<Token>> tokensLists = getDoc().getTokenList();
         for (LinkedList<Token> linkedList : tokensLists) {
@@ -153,9 +156,9 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
                 if (!aux) {
                     wordList.add(new Word(words, 1));
                 }
-                
+
             }
-        }        
+        }
         printCorpusData();
 
     }
@@ -173,21 +176,21 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
     public void setDoc(Document doc) {
         this.doc = doc;
     }
-    
+
     private class Word implements Comparable<Word> {
-        
+
         public int count;
         public String word;
         public int indx;
-        
+
         public Word() {
         }
-        
+
         private Word(String form, int i) {
             word = form;
             count = i;
         }
-        
+
         @Override
         public boolean equals(Object obj) {
             if (obj == null) {
@@ -205,12 +208,12 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
             final Word other = (Word) obj;
             return this.word.equalsIgnoreCase(other.word);
         }
-        
+
         @Override
         public int hashCode() {
             return word.hashCode();
         }
-        
+
         @Override
         public int compareTo(Word o) {
             return (this.count > o.count ? -1 : (this.count == o.count ? 0 : 1));

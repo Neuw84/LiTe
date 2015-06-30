@@ -1,5 +1,6 @@
 package edu.ehu.galan.lite.algorithms.unranked.supervised.freeLingNerEn;
 
+
 /*
  * Copyright (C) 2014 Angel Conde Manjon neuw84 at gmail.com
  *
@@ -16,6 +17,7 @@ package edu.ehu.galan.lite.algorithms.unranked.supervised.freeLingNerEn;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 import edu.ehu.galan.lite.algorithms.AbstractAlgorithm;
 import edu.ehu.galan.lite.model.Document;
@@ -52,7 +54,7 @@ public class FreeLingNerAlgorithm extends AbstractAlgorithm {
     private Properties pen;
     private final List<Term> termList;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final String file;
+    private String file="";
 
     /**
      * Choosing a different config files, different languages could be processed
@@ -60,14 +62,12 @@ public class FreeLingNerAlgorithm extends AbstractAlgorithm {
      * @param pConfigFile - the name of the config file of freeling with the NER option active, the
      * config files are in resources/configs/freeling dir (for example enPOSMW.cfg for NER MW
      * detection in english)
-     * @param pFile - The file to process
      *
      */
-    public FreeLingNerAlgorithm(String pConfigFile,String pFile) {
+    public FreeLingNerAlgorithm(String pConfigFile) {
         super(true, "FreeLingNer");
         configFile = pConfigFile;
         termList = super.getTermList();
-        file=pFile;
     }
 
     @Override
@@ -75,6 +75,7 @@ public class FreeLingNerAlgorithm extends AbstractAlgorithm {
         doc = pDoc;
         pen = new Properties();
         props = new Properties();
+        file=pDoc.getPath();
         try {
             pen.load(new FileInputStream(new File(pPropsDir + "lite/configs/pennTree.conf")));
             props.load(new FileInputStream(new File(pPropsDir + "lite/configs/general.conf")));
