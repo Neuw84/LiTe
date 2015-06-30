@@ -58,6 +58,7 @@ public final class AnalyzerSpanish extends StopwordAnalyzerBase {
     /**
      * Builds an analyzer with the default stop words:
      * {@link #getDefaultStopSet}.
+     * @param matchVersion
      */
     public AnalyzerSpanish(Version matchVersion) {
         this(matchVersion, DefaultSetHolder.DEFAULT_STOP_SET);
@@ -93,6 +94,8 @@ public final class AnalyzerSpanish extends StopwordAnalyzerBase {
      * {@link org.apache.lucene.analysis.Analyzer.TokenStreamComponents} which
      * tokenizes all the text in the provided {@link Reader}.
      *
+     * @param fieldName
+     * @param reader
      * @return A
      * {@link org.apache.lucene.analysis.Analyzer.TokenStreamComponents} built
      * from an {@link StandardTokenizer} filtered with      {@link StandardFilter}, {@link EnglishPossessiveFilter}, 

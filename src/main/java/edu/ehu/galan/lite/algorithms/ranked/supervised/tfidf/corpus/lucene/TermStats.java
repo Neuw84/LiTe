@@ -28,10 +28,26 @@ import org.apache.lucene.util.BytesRef;
  */
 
 public final class TermStats {
-  public BytesRef termtext;
-  public String field;
-  public int docFreq;
-  public long totalTermFreq;
+
+    /**
+     *
+     */
+    public BytesRef termtext;
+
+    /**
+     *
+     */
+    public String field;
+
+    /**
+     *
+     */
+    public int docFreq;
+
+    /**
+     *
+     */
+    public long totalTermFreq;
   
   TermStats(String field, BytesRef termtext, int df) {
     this.termtext = BytesRef.deepCopyOf(termtext);

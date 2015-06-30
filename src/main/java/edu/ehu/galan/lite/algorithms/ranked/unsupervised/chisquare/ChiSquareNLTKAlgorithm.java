@@ -50,6 +50,10 @@ public class ChiSquareNLTKAlgorithm extends AbstractAlgorithm {
     private String pPropsDir;
     final org.slf4j.Logger logger = LoggerFactory.getLogger(AbstractAlgorithm.class);
 
+    /**
+     *
+     * @param pFrequencyRequired
+     */
     public ChiSquareNLTKAlgorithm(int pFrequencyRequired) {
         super(true, "ChiSquare");
         frequencyRequired = pFrequencyRequired;

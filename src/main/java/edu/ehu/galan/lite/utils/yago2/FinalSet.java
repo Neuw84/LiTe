@@ -32,7 +32,9 @@ Example:
 public class FinalSet<T extends Comparable> extends AbstractList<T> implements Set<T>{
   /** Holds the data, must be sorted */
   public T[] data;  
-  /** Constructs a FinalSet from an array, clones and sorts the array if indicated. */
+  /** Constructs a FinalSet from an array, clones and sorts the array if indicated.
+     * @param clone
+     * @param a */
   @SuppressWarnings("unchecked")
   public FinalSet(boolean clone,T... a) {
     if(clone) {
@@ -43,20 +45,27 @@ public class FinalSet<T extends Comparable> extends AbstractList<T> implements S
     Arrays.sort(a);
     data=a;
   }
-  /** Constructs a FinalSet from an array that does not need to be cloned */
+  /** Constructs a FinalSet from an array that does not need to be cloned
+     * @param a */
   public FinalSet(T... a) {
     this(false,a);
   }
-  /** Tells whether x is in the container */
+  /** Tells whether x is in the container
+     * @param x
+     * @return  */
   public boolean contains(T x) {
     return(Arrays.binarySearch(data,x)>=0);
   }
-  /** Returns the position in the array or -1 */
+  /** Returns the position in the array or -1
+     * @param x
+     * @return  */
   public int indexOf(T x) {
     int r=Arrays.binarySearch(data,x);
     return(r>=0?r:-1);
   }
-  /** Returns the element at position i*/
+  /** Returns the element at position
+     * @param i
+     * @return i*/
     @Override
   public T get(int i) {
     return(data[i]);
@@ -73,7 +82,8 @@ public class FinalSet<T extends Comparable> extends AbstractList<T> implements S
       return Set.super.spliterator();
   }
   
-  /** Test routine */
+  /** Test routine
+     * @param args */
   public static void main(String[] args) {
     FinalSet<String> f=new FinalSet<String>("b","a","c");
     D.p(f.get(1));

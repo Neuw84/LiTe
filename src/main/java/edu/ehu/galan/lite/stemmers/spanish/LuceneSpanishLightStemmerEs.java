@@ -28,6 +28,10 @@ import org.apache.lucene.analysis.es.SpanishLightStemmer;
  */
 public class LuceneSpanishLightStemmerEs implements IStemmer {
     private final SpanishLightStemmer stem;
+
+    /**
+     *
+     */
     public LuceneSpanishLightStemmerEs(){
         stem = new SpanishLightStemmer();
     }

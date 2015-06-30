@@ -53,6 +53,11 @@ public abstract class AbstractRelatedness {
      */
     protected List<Topic> topicList;
 
+    /**
+     *
+     * @param pName
+     * @param pPropsDir
+     */
     public AbstractRelatedness(String pName, String pPropsDir) {
         name = pName;
         props = new Properties();

@@ -36,6 +36,10 @@ import java.util.Properties;
 public class PlainTextDocumentReaderLBJEn extends AbstractDocumentReader {
 
     private Parser parser = null;
+
+    /**
+     *
+     */
     public Properties pen = null;
 
     /**

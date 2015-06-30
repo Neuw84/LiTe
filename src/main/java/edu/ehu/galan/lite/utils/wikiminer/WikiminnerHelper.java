@@ -131,6 +131,11 @@ public class WikiminnerHelper {
         localMode = !props.get("localMode").equals("false");
     }
 
+    /**
+     *
+     * @param pPropDirs
+     * @return
+     */
     public static WikiminnerHelper getInstance(String pPropDirs) {
         if (instance == null) {
             synchronized (WikiminnerHelper.class) {
@@ -237,14 +242,14 @@ public class WikiminnerHelper {
     }
 
     /**
-     *
+     * Closes the connection to the Wikiminer Rest Services when using Wikiminer in remote mode
      */
     public void closeConnection() {
         httpClient.getConnectionManager().shutdown();
     }
 
     /**
-     *
+     * Opens the connection to the Wikiminer Rest Services when using Wikiminer in remote mode
      */
     public void openConnection() {
 
@@ -255,6 +260,8 @@ public class WikiminnerHelper {
     }
 
     /**
+     *
+     * Maps a term to Wikipedia using the Wikiminer (only implemented the remote mode
      *
      * @param term1
      * @return
@@ -326,8 +333,9 @@ public class WikiminnerHelper {
     }
 
     /**
-     *
+     * Given a Wikipedia page title it returns the identifier associated with it
      * @param term1
+     * @param pLang
      * @return
      */
     public int getIdFromTitle(String term1, String pLang) {
@@ -426,10 +434,11 @@ public class WikiminnerHelper {
     //}
 
     /**
-     *
+     * Return a list of labels for a Wikipedia article (only remote mode)
      * @param wikiId
      * @return
      */
+    
     public List<String> exploreLabels(int wikiId) {
         FileOutputStream out = null;
         try {
@@ -471,10 +480,13 @@ public class WikiminnerHelper {
     }
 
     /**
+     * Maps a term list to Wikipedia using the Wiminer services and returns a list of topics (terms
+     * mapped to Wikipedia). Those terms not mapped will be discarded.
      *
      * @param termList
      * @return
      */
+    
     public List<Topic> parallelSearch(List<Term> termList) {
         List<String> lis = new ArrayList<>();
         long timeStart = System.nanoTime();
@@ -640,7 +652,8 @@ public class WikiminnerHelper {
     }
 
     /**
-     *
+     * Relate a list of topics with the important topics of the domain
+     * 
      * @param pTtopicList
      * @param cGold
      * @param relatedness
@@ -1319,6 +1332,9 @@ public class WikiminnerHelper {
         }
     }
 
+    /**
+     * If we are using the Wikiminer via the API (local mode) we should close it after use
+     */
     public void closeWikipedia() {
         wikipedia.close();
     }
@@ -1373,22 +1389,40 @@ public class WikiminnerHelper {
 //        }
 //    }
 
+    /**
+     *
+     * @param enabled
+     * @param configFile
+     */
     public void setLocalMode(boolean enabled, String configFile) {
         localMode = enabled;
-        try {
-            WikipediaConfiguration conf = new WikipediaConfiguration(new File(configFile + "-" + lang + ".xml"));
-            conf.clearDatabasesToCache();
-            wikipedia = new Wikipedia(conf, true);
-        } catch (EnvironmentLockedException | ParserConfigurationException | SAXException | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            logger.error("Error loading Wikipedia miner Wikipedia, check the config dirs", ex);
+        if (localMode) {
+            try {
+                WikipediaConfiguration conf = new WikipediaConfiguration(new File(configFile + "-" + lang + ".xml"));
+                conf.clearDatabasesToCache();
+                wikipedia = new Wikipedia(conf, true);
+            } catch (EnvironmentLockedException | ParserConfigurationException | SAXException | IOException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                logger.error("Error loading Wikipedia miner Wikipedia, check the config dirs", ex);
+            }
         }
     }
 
+    /**
+     *
+     * @param enabled
+     * @param wiki
+     */
     public void setLocalModeWiki(boolean enabled, Wikipedia wiki) {
         localMode = enabled;
         wikipedia = wiki;
     }
 
+    /**
+     *
+     * @param inteList
+     * @param topicsEn
+     * @return
+     */
     public HashMap<Integer, List<Integer>> getDataTitles(List<Integer> inteList, List<String> topicsEn) {
         HashMap<String, Integer> mapper = new HashMap<>();
         HashMap<Integer, List<Integer>> titles = new HashMap<>();

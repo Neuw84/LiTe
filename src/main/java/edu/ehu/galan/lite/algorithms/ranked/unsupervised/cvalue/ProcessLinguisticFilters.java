@@ -98,6 +98,10 @@ public class ProcessLinguisticFilters {
         return cand;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumberOfFilters() {
         return filterList.size();
     }

@@ -43,6 +43,9 @@ public class AlgorithmRunner {
     private final ExecutorService exec;
     private final CompletionService<Integer> comp;
 
+    /**
+     *
+     */
     public AlgorithmRunner() {
         algList = new ArrayList<>();
         //we put more threads than the available processors because some algorithms will be IO limited
@@ -50,6 +53,10 @@ public class AlgorithmRunner {
         comp = new ExecutorCompletionService<>(exec);
     }
 
+    /**
+     *
+     * @param alg
+     */
     public void submitAlgorithm(AbstractAlgorithm alg) {
         algList.add(alg);
     }
@@ -87,10 +94,17 @@ public class AlgorithmRunner {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public List<AbstractAlgorithm> getAlgorithms() {
         return algList;
     }
 
+    /**
+     *
+     */
     public void shutdown() {
         exec.shutdown();
 

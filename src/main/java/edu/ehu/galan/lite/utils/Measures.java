@@ -16,9 +16,9 @@ package edu.ehu.galan.lite.utils;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import edu.ehu.galan.lite.model.Topic;
 import edu.ehu.galan.lite.stemmers.english.PlingStemmerEn;
-import gnu.trove.map.hash.TIntObjectHashMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -158,6 +158,9 @@ public class Measures {
         }
     }
 
+    /**
+     *
+     */
     public static void deletetLabelMap() {
         hashMap = null;
     }

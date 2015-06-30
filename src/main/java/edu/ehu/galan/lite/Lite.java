@@ -51,7 +51,6 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
@@ -73,8 +72,6 @@ public class Lite {
 
         // create Options object
         Options options = new Options();
-        OptionGroup required = new OptionGroup();
-        required.setRequired(false);
         Option corpus = new Option("c", true, "the location (directory) of the corpus to process, containing only one document at the moment");
         Option language = new Option("l", true, "the language of the corpus (lowercase ISO format, for example 'en'");
         Option algorithms = new Option("a", true, "the algorithms you want to process separated by commas: \n"
@@ -94,12 +91,12 @@ public class Lite {
                 + "tstudent=> processes the T-Student using the NLTK toolkit (language agnostic)\n"
                 + "rawfreq=> processes the raw frequency algorithm using the NLTK toolkit (language agnostic)\n"
                 + "freelingner=> processes the FreeLing ner algorithm via external call(es, en)\n");
-        required.addOption(resources);
-        required.addOption(corpus);
-        required.addOption(language);
-        required.addOption(algorithms);
-        options.addOptionGroup(required);
+        options.addOption(resources);
+        options.addOption(corpus);
+        options.addOption(language);
+        options.addOption(algorithms);
         options.addOption(help);
+        options.addOption(listAlgs);
         // automatically generate the help statement
         HelpFormatter formatter = new HelpFormatter();
         String[] s = new String[]{};
@@ -107,9 +104,9 @@ public class Lite {
         CommandLineParser parser = new org.apache.commons.cli.GnuParser();
         try {
             // parse the command line arguments
-            CommandLine line = parser.parse(options, s);
+            CommandLine line = parser.parse(options, args);
             if (line.hasOption('c') && line.hasOption('l') && line.hasOption('a') && line.hasOption('r')) {
-                if (!line.getOptionValue('l').equals("en") || !line.getOptionValue("l").equals("es")) {
+                if (!line.getOptionValue('l').equals("en") && !line.getOptionValue("l").equals("es")) {
                     System.out.println("Supported languages \"en\" or \"es\", however you may use the statistical algorithms via the API");
                 } else {
                     String lang = line.getOptionValue('l');
@@ -118,11 +115,11 @@ public class Lite {
                     String res = line.getOptionValue('r');
                     List<String> algs = Arrays.asList(line.getOptionValue('a').split(","));
                     System.out.println("Processing.... (it may take a while...)");
-                    runner(lang, res, algs, cor);
+                    runner(lang, res + File.separator, algs, cor);
                 }
             }
             if (line.hasOption('c') && line.hasOption('l') && line.hasOption('r')) {
-                if (!line.getOptionValue('l').equals("en") || !line.getOptionValue("l").equals("es")) {
+                if (!line.getOptionValue('l').equals("en") && !line.getOptionValue("l").equals("es")) {
                     System.out.println("Supported languages \"en\" or \"es\", however you may use the statistical algorithms via the API");
                 } else {
                     System.out.println("Processing with default algorithms (TFIDF/CValue).... (it may take a while...)");
@@ -143,7 +140,7 @@ public class Lite {
                             break;
                         }
                     }
-                    runner(lang, res, algos, cor);
+                    runner(lang, res + File.separator, algos, cor);
                 }
             } else if (line.hasOption("h")) {
                 formatter.printHelp("LiTe: a language indepent term extractor", options);
@@ -167,7 +164,6 @@ public class Lite {
         if (CacheManager.getCacheManager("ehcacheLitet.xml") == null) {
             CacheManager.create("ehcacheLitet.xml");
         }
-        cache = CacheManager.getInstance().getCache("LiteCache");
         Properties props = new Properties();
         try {
             props.load(new FileInputStream(resources + "lite/configs/general.conf"));
@@ -255,6 +251,9 @@ public class Lite {
         CValueWikiDisambiguator disambiguator = new CValueWikiDisambiguator(resources, helper);
         CValueWikiRelationship relate = new CValueWikiRelationship(resources, helper);
         WikipediaData data = new WikipediaData(resources, helper);
+        if (!(props.getProperty("localMode")).equals("true")) {
+            helper.openConnection();
+        }
         helper.openConnection();
         while (!corpus.getDocQueue().isEmpty()) {
             Document doc = corpus.getDocQueue().poll();
@@ -286,6 +285,8 @@ public class Lite {
         } else {
             helper.closeConnection();
         }
-
+        
+        CacheManager.getInstance().shutdown();
+        System.exit(0);
     }
 }

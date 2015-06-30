@@ -53,6 +53,10 @@ public class RawFreqNLTKAlgorithm extends AbstractAlgorithm {
     final org.slf4j.Logger logger = LoggerFactory.getLogger(AbstractAlgorithm.class);
     private String pPropsDir;
 
+    /**
+     *
+     * @param pFrequencyRequired
+     */
     public RawFreqNLTKAlgorithm(int pFrequencyRequired) {
         super(true, "RawFreq");
         frequencyRequired = pFrequencyRequired;

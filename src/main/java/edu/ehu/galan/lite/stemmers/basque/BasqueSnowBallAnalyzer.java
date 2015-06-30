@@ -30,6 +30,9 @@ public class BasqueSnowBallAnalyzer implements IStemmer {
 
     private final SnowballProgram stem;
 
+    /**
+     *
+     */
     public BasqueSnowBallAnalyzer() {
         stem = new BasqueStemmer();
     }

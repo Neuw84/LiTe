@@ -52,6 +52,10 @@ public class TStudentNLTKAlgorithm extends AbstractAlgorithm {
     private String pPropsDir;
     private Document doc;
 
+    /**
+     *
+     * @param pFrequencyRequired
+     */
     public TStudentNLTKAlgorithm(int pFrequencyRequired) {
         super(true, "TStudent");
         frequencyRequired = pFrequencyRequired;

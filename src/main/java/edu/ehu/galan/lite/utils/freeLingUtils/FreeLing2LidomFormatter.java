@@ -30,6 +30,9 @@ public class FreeLing2LidomFormatter {
     private List<List<String>> lineList = null;
     private int currentLine;
 
+    /**
+     *
+     */
     public FreeLing2LidomFormatter() {
         lineList = new ArrayList<>();
         lineList.add(new ArrayList<>());
@@ -50,15 +53,26 @@ public class FreeLing2LidomFormatter {
         this.lineList = lineList;
     }
 
+    /**
+     *
+     */
     public void addLine() {
         lineList.add(new ArrayList<>());
         currentLine++;
     }
 
+    /**
+     *
+     * @param pWord
+     */
     public void addWord(String pWord) {
         lineList.get(currentLine).add(pWord);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContent() {
         List<String> currentL = null;
         String word;

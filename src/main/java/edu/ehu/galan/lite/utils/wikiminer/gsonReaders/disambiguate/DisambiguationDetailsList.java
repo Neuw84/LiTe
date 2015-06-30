@@ -7,6 +7,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
+/**
+ *
+ * @author angel
+ */
 @Generated("com.googlecode.jsonschema2pojo")
 public class DisambiguationDetailsList implements Serializable{
     @Expose
@@ -20,26 +24,50 @@ public class DisambiguationDetailsList implements Serializable{
     @Expose
     private List<Interpretation> interpretations = new ArrayList<Interpretation>();
 
+    /**
+     *
+     * @return
+     */
     public Integer getTerm1Candidates() {
         return term1Candidates;
     }
 
+    /**
+     *
+     * @param term1Candidates
+     */
     public void setTerm1Candidates(Integer term1Candidates) {
         this.term1Candidates = term1Candidates;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getTerm2Candidates() {
         return term2Candidates;
     }
 
+    /**
+     *
+     * @param term2Candidates
+     */
     public void setTerm2Candidates(Integer term2Candidates) {
         this.term2Candidates = term2Candidates;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Interpretation> getInterpretations() {
         return interpretations;
     }
 
+    /**
+     *
+     * @param interpretations
+     */
     public void setInterpretations(List<Interpretation> interpretations) {
         this.interpretations = interpretations;
     }

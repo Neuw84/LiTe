@@ -43,6 +43,10 @@ public class PlainTextDocumentReaderFreeLingEs extends AbstractDocumentReader {
     private final Properties props;
     private String loc;
 
+    /**
+     *
+     * @param pProps
+     */
     public PlainTextDocumentReaderFreeLingEs(String pProps) {
         super();
         props = new Properties();

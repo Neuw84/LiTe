@@ -60,6 +60,8 @@ public class PlingStemmerEn implements IStemmer {
     /**
      * Tells whether a word form is plural. This method just checks whether the
      * stem method alters the word
+     * @param s
+     * @return 
      */
     public boolean isPlural(String s) {
         return (!s.equals(stem(s)));
@@ -68,6 +70,8 @@ public class PlingStemmerEn implements IStemmer {
     /**
      * Tells whether a word form is singular. Note that a word can be both
      * plural and singular
+     * @param s
+     * @return 
      */
     public boolean isSingular(String s) {
         return (singAndPlur.contains(s.toLowerCase()) || !isPlural(s));
@@ -76,6 +80,8 @@ public class PlingStemmerEn implements IStemmer {
     /**
      * Tells whether a word form is the singular form of one word and at the
      * same time the plural form of another.
+     * @param s
+     * @return 
      */
     public boolean isSingularAndPlural(String s) {
         return (singAndPlur.contains(s.toLowerCase()));
@@ -84,6 +90,9 @@ public class PlingStemmerEn implements IStemmer {
     /**
      * Cuts a suffix from a string (that is the number of chars given by the
      * suffix)
+     * @param s
+     * @param suffix
+     * @return 
      */
     public String cut(String s, String suffix) {
         return (s.substring(0, s.length() - suffix.length()));
@@ -91,6 +100,8 @@ public class PlingStemmerEn implements IStemmer {
 
     /**
      * Returns true if a word is probably not Latin
+     * @param s
+     * @return 
      */
     public boolean noLatin(String s) {
         return (s.indexOf('h') > 0 || s.indexOf('j') > 0 || s.indexOf('k') > 0
@@ -108,6 +119,7 @@ public class PlingStemmerEn implements IStemmer {
 
     /**
      * Stems an English noun to its singular form
+     * @param s
      */
     public String stem(String s) {
         String stem = s;

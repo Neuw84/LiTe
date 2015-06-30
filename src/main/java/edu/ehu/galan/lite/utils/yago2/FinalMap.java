@@ -21,9 +21,12 @@ Example:
    System.out.println(f.get("b"));
    --> 2
 </PRE>
+ * @param <T1>
+ * @param <T2>
 */
 public class FinalMap<T1 extends Comparable,T2> extends TreeMap<T1,T2>{
-  /** Constructs a FinalMap from an array that contains key/value sequences */  
+  /** Constructs a FinalMap from an array that contains key/value sequences
+     * @param a */  
   @SuppressWarnings("unchecked")
   public FinalMap(Object... a) {
     super();    
@@ -33,7 +36,8 @@ public class FinalMap<T1 extends Comparable,T2> extends TreeMap<T1,T2>{
     }
   }
   
-  /** Test routine */
+  /** Test routine
+     * @param args */
   public static void main(String[] args) {
     FinalMap<String,Integer> f=new FinalMap<String,Integer>("a",1,"b",2);
     System.out.println(f.get("b"));

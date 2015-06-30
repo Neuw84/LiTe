@@ -26,11 +26,26 @@ public class CaseStemmer implements IStemmer {
 
     private final CaseType typeOfCase;
 
+    /**
+     *
+     */
     public enum CaseType {
 
-        lowercase, uppercase
+        /**
+         *
+         */
+        lowercase,
+
+        /**
+         *
+         */
+        uppercase
     }
 
+    /**
+     *
+     * @param pCase
+     */
     public CaseStemmer(CaseType pCase) {
         typeOfCase = pCase;
     }

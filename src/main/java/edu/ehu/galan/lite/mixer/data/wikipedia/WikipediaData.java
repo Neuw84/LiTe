@@ -41,7 +41,11 @@ public class WikipediaData extends AbstractData {
     private transient final WikiminnerHelper helper;
     private boolean getLinks=false;
 
-
+    /**
+     *
+     * @param pPropsDir
+     * @param pHelper
+     */
     public WikipediaData(String pPropsDir,WikiminnerHelper pHelper) {
         super("Wikipedia", pPropsDir);
         props = new Properties();
@@ -70,8 +74,10 @@ public class WikipediaData extends AbstractData {
             
     }
     
-    
-    
+    /**
+     *
+     * @param links
+     */
     public void getLinks(boolean links){
         getLinks=links;
     }

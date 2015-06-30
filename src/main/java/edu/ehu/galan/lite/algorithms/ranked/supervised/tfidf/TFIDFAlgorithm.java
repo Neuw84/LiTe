@@ -118,6 +118,9 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
         this.stemmer = stemmer;
     }
 
+    /**
+     *
+     */
     public void printCorpusData() {
         Collections.sort(wordList);
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(props.getProperty("tmpDir") + "/tfCorpusData"), Charsets.UTF_8)) {

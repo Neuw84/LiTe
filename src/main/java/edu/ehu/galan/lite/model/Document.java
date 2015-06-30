@@ -74,9 +74,20 @@ public class Document {
         this.source = source;
     }
     
+    /**
+     *
+     */
     public enum SourceType {
         
-        wikipedia, wordnet;
+        /**
+         *
+         */
+        wikipedia,
+
+        /**
+         *
+         */
+        wordnet;
     }
     
     private transient String path;
@@ -105,6 +116,12 @@ public class Document {
         source = SourceType.wikipedia;
     }
     
+    /**
+     *
+     * @param pPath
+     * @param pName
+     * @param pSourceType
+     */
     public Document(String pPath, String pName, SourceType pSourceType) {
         path = pPath;
         name = pName;
@@ -573,6 +590,10 @@ public class Document {
         return domainTopics;
     }
     
+    /**
+     *
+     * @param pDomain
+     */
     public void setDomainTopics(HashMap<Integer,String> pDomain){
        domainTopics=pDomain;
     }

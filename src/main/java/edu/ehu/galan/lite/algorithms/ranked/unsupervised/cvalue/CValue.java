@@ -26,10 +26,17 @@ public class CValue {
 
     private List<Candidate> candList;
 
+    /**
+     *
+     * @param candList
+     */
     public CValue(List<Candidate> candList) {
         this.candList = candList;
     }
 
+    /**
+     *
+     */
     public void processCValue() {
         for (Candidate cand : getCandList()) {
             for (Candidate cand2 : getCandList()) {

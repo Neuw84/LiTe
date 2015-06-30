@@ -50,6 +50,9 @@ public class PorterStemmerEn {
     private static final int INC = 50;
     /* unit of size whereby b is increased */
 
+    /**
+     *
+     */
     public PorterStemmerEn() {
         b = new char[INC];
         i = 0;
@@ -59,6 +62,7 @@ public class PorterStemmerEn {
     /**
      * Add a character to the word being stemmed. When you are finished adding
      * characters, you can call stem(void) to stem the word.
+     * @param ch
      */
     public void add(char ch) {
         if (i == b.length) {
@@ -74,6 +78,8 @@ public class PorterStemmerEn {
     /**
      * Adds wLen characters to the word being stemmed contained in a portion of
      * a char[] array. This is like repeated calls of add(char ch), but faster.
+     * @param w
+     * @param wLen
      */
     public void add(char[] w, int wLen) {
         if (i + wLen >= b.length) {
@@ -90,6 +96,7 @@ public class PorterStemmerEn {
      * After a word has been stemmed, it can be retrieved by toString(), or a
      * reference to the internal buffer can be retrieved by getResultBuffer and
      * getResultLength (which is generally more efficient.)
+     * @return 
      */
     @Override
     public String toString() {
@@ -98,6 +105,7 @@ public class PorterStemmerEn {
 
     /**
      * Returns the length of the word resulting from the stemming process.
+     * @return 
      */
     public int getResultLength() {
         return i_end;
@@ -107,6 +115,7 @@ public class PorterStemmerEn {
      * Returns a reference to a character buffer containing the results of the
      * stemming process. You also need to consult getResultLength() to determine
      * the length of the result.
+     * @return 
      */
     public char[] getResultBuffer() {
         return b;

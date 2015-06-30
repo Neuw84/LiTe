@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ * @author angel
+ */
 public class ArticleList implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -22,66 +26,131 @@ public class ArticleList implements Serializable {
 
     private final Map<String, Object> additionalProperties = new HashMap<>();
 
+    /**
+     *
+     * @return
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
     
-      public String getDefinition() {
+    /**
+     *
+     * @return
+     */
+    public String getDefinition() {
         return definition;
     }
 
+    /**
+     *
+     * @param definition
+     */
     public void setDefinition(String definition) {
         this.definition = title;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Label> getLabels() {
         return labels;
     }
 
+    /**
+     *
+     * @param labels
+     */
     public void setLabels(List<Label> labels) {
         this.labels = labels;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Translation> getTranslations() {
         return translations;
     }
 
+    /**
+     *
+     * @param translations
+     */
     public void setTranslations(List<Translation> translations) {
         this.translations = translations;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<ParentCategory> getParentCategories() {
         return parentCategories;
     }
 
+    /**
+     *
+     * @param parentCategories
+     */
     public void setParentCategories(List<ParentCategory> parentCategories) {
         this.parentCategories = parentCategories;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getTotalParentCategories() {
         return totalParentCategories;
     }
 
+    /**
+     *
+     * @param totalParentCategories
+     */
     public void setTotalParentCategories(Integer totalParentCategories) {
         this.totalParentCategories = totalParentCategories;
     }
 
+    /**
+     *
+     * @return
+     */
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
+    /**
+     *
+     * @param name
+     * @param value
+     */
     public void setAdditionalProperties(String name, Object value) {
         this.additionalProperties.put(name, value);
     }

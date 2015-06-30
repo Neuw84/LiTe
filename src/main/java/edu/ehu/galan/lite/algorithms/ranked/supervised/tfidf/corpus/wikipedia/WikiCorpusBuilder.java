@@ -81,6 +81,12 @@ public class WikiCorpusBuilder {
 
     }
 
+    /**
+     *
+     * @param pIndexDir
+     * @param wikiExtractorDir
+     * @param wordsLimit
+     */
     public void buildIndex(String pIndexDir, String wikiExtractorDir, int wordsLimit) {
         limit = wordsLimit;
         initializeIndex(pIndexDir);

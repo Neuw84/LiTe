@@ -37,6 +37,9 @@ public abstract class AbstractDocumentReader {
      */
     protected List<String> sentenceList;
 
+    /**
+     *
+     */
     public AbstractDocumentReader() {
         tokenizedSentenceList = new ArrayList<>();
         sentenceList = new ArrayList<>();

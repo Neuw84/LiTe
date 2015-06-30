@@ -220,6 +220,12 @@ public class CG2Helper {
         }
     }
 
+    /**
+     *
+     * @param pString
+     * @param pPenProperties
+     * @return
+     */
     public  static String parserToCG(String pString, Properties pPenProperties) {
 //        System.out.println(pString);
         String newLine = System.getProperty("line.separator");

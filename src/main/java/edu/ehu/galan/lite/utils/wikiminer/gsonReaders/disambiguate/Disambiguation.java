@@ -7,6 +7,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
+/**
+ *
+ * @author angel
+ */
 @Generated("com.googlecode.jsonschema2pojo")
 public class Disambiguation implements Serializable {
 
@@ -17,26 +21,50 @@ public class Disambiguation implements Serializable {
     @Expose
     private Request request;
 
+    /**
+     *
+     * @return
+     */
     public List<DisambiguationDetailsList> getDisambiguationDetailsList() {
         return disambiguationDetailsList;
     }
 
+    /**
+     *
+     * @param disambiguationDetailsList
+     */
     public void setDisambiguationDetailsList(List<DisambiguationDetailsList> disambiguationDetailsList) {
         this.disambiguationDetailsList = disambiguationDetailsList;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getService() {
         return service;
     }
 
+    /**
+     *
+     * @param service
+     */
     public void setService(String service) {
         this.service = service;
     }
 
+    /**
+     *
+     * @return
+     */
     public Request getRequest() {
         return request;
     }
 
+    /**
+     *
+     * @param request
+     */
     public void setRequest(Request request) {
         this.request = request;
     }

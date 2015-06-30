@@ -58,6 +58,10 @@ public class PointWiseMutualInformationNLTKAlgorithm extends AbstractAlgorithm {
     final org.slf4j.Logger logger = LoggerFactory.getLogger(AbstractAlgorithm.class);
     private String pPropsDir;
 
+    /**
+     *
+     * @param pFrequencyRequired
+     */
     public PointWiseMutualInformationNLTKAlgorithm(int pFrequencyRequired) {
         super(true, "PMI");
         props = new Properties();

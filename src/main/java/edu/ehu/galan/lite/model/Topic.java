@@ -460,10 +460,20 @@ public class Topic implements Serializable {
         this.domainRelatedness = domainRelatedness;
     }
 
+    /**
+     *
+     * @param id
+     * @param relatedness
+     */
     public void addLinkIn(int id, double relatedness) {
         getLinksIn().put(id, relatedness);
     }
 
+    /**
+     *
+     * @param id
+     * @param relatedness
+     */
     public void addLinkOut(int id, double relatedness) {
         getLinksOut().put(id, relatedness);
     }

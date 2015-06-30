@@ -61,6 +61,11 @@ public class CValueWikiRelationship extends AbstractRelatedness {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private transient final WikiminnerHelper helper;
 
+    /**
+     *
+     * @param pPropsDir
+     * @param pHelper
+     */
     public CValueWikiRelationship(String pPropsDir, WikiminnerHelper pHelper) {
         super("CValueWikiRelationship", pPropsDir);
         cGold = new ArrayList<>();

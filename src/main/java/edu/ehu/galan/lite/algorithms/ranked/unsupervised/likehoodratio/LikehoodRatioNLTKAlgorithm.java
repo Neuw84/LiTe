@@ -54,6 +54,10 @@ public class LikehoodRatioNLTKAlgorithm extends AbstractAlgorithm {
     final org.slf4j.Logger logger = LoggerFactory.getLogger(AbstractAlgorithm.class);
     private String pPropsDir;
 
+    /**
+     *
+     * @param pFrequencyRequired
+     */
     public LikehoodRatioNLTKAlgorithm( int pFrequencyRequired) {
         super(true, "LikehoodRatio");
         frequencyRequired = pFrequencyRequired;

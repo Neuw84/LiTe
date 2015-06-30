@@ -31,6 +31,9 @@ public class SpanishSnowballStemmer implements IStemmer{
 
     private final SnowballProgram stem;
 
+    /**
+     *
+     */
     public SpanishSnowballStemmer() {
         stem = new SpanishStemmer();
     }

@@ -1,10 +1,5 @@
 package edu.ehu.galan.lite.utils;
 
-import java.text.DecimalFormat;
-import java.util.Date;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /*
  * Copyright (C) 2014 Angel Conde Manjon, Adapted from Wikipedia Miner by
  * David Milne
@@ -23,8 +18,16 @@ import org.slf4j.LoggerFactory;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+import java.text.DecimalFormat;
+import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
+/**
+ * Class for measuring the progress of long tasks
+ *
+ * @author angel
+ */
 public final class ProgressTracker {
 
     private final int tasks;
@@ -67,8 +70,8 @@ public final class ProgressTracker {
     }
 
     /**
-     * Creates a ProgressTracker for tracking the given number of tasks. You
-     * will have to call startTask before starting each one.
+     * Creates a ProgressTracker for tracking the given number of tasks. You will have to call
+     * startTask before starting each one.
      *
      * @param tasks the task this notifier will track.
      * @param logClass
@@ -89,6 +92,10 @@ public final class ProgressTracker {
         minReportInterval = val;
     }
 
+    /**
+     *
+     * @param val
+     */
     public void setMinReportProgress(double val) {
         minReportProgress = val;
     }
@@ -138,8 +145,7 @@ public final class ProgressTracker {
     }
 
     /**
-     * Returns the proportion of the current task that has been completed so
-     * far.
+     * Returns the proportion of the current task that has been completed so far.
      *
      * @return see above
      */
@@ -148,8 +154,7 @@ public final class ProgressTracker {
     }
 
     /**
-     * Returns the proportion of the overall task that has been completed so
-     * far.
+     * Returns the proportion of the overall task that has been completed so far.
      *
      * @return see above
      */

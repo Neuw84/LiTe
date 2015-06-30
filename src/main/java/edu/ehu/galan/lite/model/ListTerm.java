@@ -29,6 +29,11 @@ public class ListTerm {
     private final String name;
     private List<Term> termList;
 
+    /**
+     *
+     * @param pName
+     * @param pTermList
+     */
     public ListTerm(String pName, List<Term> pTermList) {
         name = pName;
         termList = pTermList;
@@ -49,6 +54,10 @@ public class ListTerm {
         return termList;
     }
 
+    /**
+     *
+     * @param pListTerm
+     */
     public void setTermList(List<Term> pListTerm) {
         termList = pListTerm;
     }

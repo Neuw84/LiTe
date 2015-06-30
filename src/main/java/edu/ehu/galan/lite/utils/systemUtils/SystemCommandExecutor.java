@@ -42,6 +42,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *
+ * @author angel
+ */
 public class SystemCommandExecutor {
 
     private final static Logger logger = LoggerFactory.getLogger(SystemCommandExecutor.class);
@@ -325,6 +329,9 @@ public class SystemCommandExecutor {
         pb.directory(new File(pFile));
     }
 
+    /**
+     *
+     */
     public void closeStreams() {
 
         if (inputStreamHandler != null) {

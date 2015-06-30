@@ -45,6 +45,10 @@ public class PlainTextDocumentReaderFreeLingEn extends AbstractDocumentReader {
     private final Properties pen;
     private transient final Logger logger = LoggerFactory.getLogger(PlainTextDocumentReaderFreeLingEn.class);
 
+    /**
+     *
+     * @param pProps
+     */
     public PlainTextDocumentReaderFreeLingEn(String pProps) {
         super();
         props = new Properties();

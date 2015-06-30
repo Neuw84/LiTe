@@ -29,6 +29,11 @@ public class Candidate {
     private int freq, uniqNesters, freqNested;
     private float cvalue;
 
+    /**
+     *
+     * @param candidate
+     * @param lenght
+     */
     public Candidate(String candidate, int lenght) {
         this.text = candidate;
         this.lenght = lenght;
@@ -65,6 +70,10 @@ public class Candidate {
         this.lenght = lenght;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getCValue() {
         if (cvalue == -1) {
             float log_2_lenD = ((float)(Math.log((float) lenght)) / (float)Math.log((float) 2));
@@ -84,30 +93,57 @@ public class Candidate {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getFrequency() {
         return freq;
     }
 
+    /**
+     *
+     * @param freq
+     */
     public void incrementFreq(int freq) {
         this.freq += freq;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLength() {
         return lenght;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNesterCount() {
         return uniqNesters;
     }
 
+    /**
+     *
+     */
     public void observeNested() {
         uniqNesters++;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getFreqNested() {
         return freqNested;
     }
 
+    /**
+     *
+     * @param freq
+     */
     public void incrementFreqNested(int freq) {
         freqNested += freq;
     }

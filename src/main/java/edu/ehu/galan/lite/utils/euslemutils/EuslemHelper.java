@@ -53,22 +53,37 @@ public class EuslemHelper {
         }
 
     }
+
+    /**
+     *
+     */
     public EuslemHelper() {
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
 
     }
 
+    /**
+     *
+     */
     public void closeConnection() {
         httpClient.getConnectionManager().shutdown();
     }
 
+    /**
+     *
+     */
     public void openConnection() {
         httpClient = null;
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
     }
 
+    /**
+     *
+     * @param pText
+     * @param pLevel
+     */
     public void analyzeText(String pText, int pLevel) {
         System.out.println(props.getProperty("euslemUrl"));
         try {

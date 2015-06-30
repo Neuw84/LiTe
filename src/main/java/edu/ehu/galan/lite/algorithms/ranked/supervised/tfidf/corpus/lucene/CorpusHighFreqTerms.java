@@ -54,7 +54,15 @@ import org.slf4j.LoggerFactory;
 public class CorpusHighFreqTerms {
 
     // The top numTerms will be displayed
-    public static final int DEFAULTnumTerms = 1000;
+
+    /**
+     *
+     */
+        public static final int DEFAULTnumTerms = 1000;
+
+    /**
+     *
+     */
     public static int numTerms = DEFAULTnumTerms;
     private static final Logger logger=LoggerFactory.getLogger(CorpusHighFreqTerms.class);
 
@@ -193,6 +201,14 @@ public class CorpusHighFreqTerms {
         return ts;
     }
 
+    /**
+     *
+     * @param reader
+     * @param field
+     * @param termText
+     * @return
+     * @throws Exception
+     */
     public static long getTotalTermFreq(IndexReader reader, final String field, final BytesRef termText) throws Exception {
         long totalTF = 0L;
         for (final AtomicReaderContext ctx : reader.getTopReaderContext().leaves()) {

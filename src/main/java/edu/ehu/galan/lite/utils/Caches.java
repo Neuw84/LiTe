@@ -28,6 +28,10 @@ import java.util.HashMap;
 public class Caches {
     private final HashMap<Integer, Topic> id2Topic = new HashMap<>();
 
+    /**
+     *
+     * @param pDoc
+     */
     public void initializeId2TopicMap(Document pDoc) {
         if (!id2Topic.isEmpty()) {
             id2Topic.clear();
@@ -35,10 +39,17 @@ public class Caches {
         pDoc.getTopicList().stream().forEach((Topic t) -> id2Topic.put(t.getId(), t));
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<Integer, Topic> getId2TopicMap() {
         return id2Topic;
     }
 
+    /**
+     *
+     */
     public void clearId2TopicMap() {
         id2Topic.clear();
     }
