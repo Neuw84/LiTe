@@ -25,8 +25,7 @@ For the Disambiguation and Linker part: the [Wikiminer](http://www.sciencedirect
 **License**: GPL V2 or any later version
 
 ###TODO's
-- Integrate IXA-PIPEs to only depend on OPEN-NLP Library (reduce the POM size)
-
+- .....
 ###Contact information
 ````shell
 Angel Conde
