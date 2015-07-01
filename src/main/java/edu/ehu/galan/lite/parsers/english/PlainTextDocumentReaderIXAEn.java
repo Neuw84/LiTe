@@ -65,12 +65,12 @@ public class PlainTextDocumentReaderIXAEn extends AbstractDocumentReader {
             TOKannotator.tokenizedToKAF(kaf);
             newLp.setEndTimestamp();
             Properties posProperties = setAnnotatePropertiesPos("resources/lite/pos-models/en/en-pos-perceptron-c0-b3-dev.bin", "en", "3", "false", "false", "resources/lite/");
-            eus.ixa.ixa.pipe.pos.Annotate POSannotator = new eus.ixa.ixa.pipe.pos.Annotate(posProperties);
+            edu.ehu.galan.lite.utils.ixatools.pos.pos.Annotate POSannotator = new edu.ehu.galan.lite.utils.ixatools.pos.pos.Annotate(posProperties);
             KAFDocument.LinguisticProcessor newLp2 = kaf.addLinguisticProcessor("terms", "ixa-pipe-pos-" + "en", "angel");
             newLp2.setBeginTimestamp();
             POSannotator.annotatePOSToKAF(kaf);
             newLp2.setEndTimestamp();
-            ixa.pipe.chunk.Annotate chunkAnnotator = new ixa.pipe.chunk.Annotate("resources/lite/chunk-models/", "en");
+            edu.ehu.galan.lite.utils.ixatools.chunk.Annotate chunkAnnotator = new edu.ehu.galan.lite.utils.ixatools.chunk.Annotate("resources/lite/chunk-models/", "en");
             KAFDocument.LinguisticProcessor newLp3 = kaf.addLinguisticProcessor("chunks", "ixa-pipe-chunk-" + "en", "angel");
             newLp3.setBeginTimestamp();
             chunkAnnotator.chunkToKAF(kaf);

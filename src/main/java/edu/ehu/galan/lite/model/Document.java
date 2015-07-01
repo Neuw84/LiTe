@@ -73,23 +73,22 @@ public class Document {
     public void setSource(SourceType source) {
         this.source = source;
     }
-    
+
     /**
      *
      */
     public enum SourceType {
-        
+
         /**
          *
          */
         wikipedia,
-
         /**
          *
          */
         wordnet;
     }
-    
+
     private transient String path;
     private transient List<String> sentenceList;
     private transient List<LinkedList<Token>> tokenList;
@@ -115,7 +114,7 @@ public class Document {
         termList = new ArrayList<>();
         source = SourceType.wikipedia;
     }
-    
+
     /**
      *
      * @param pPath
@@ -223,7 +222,7 @@ public class Document {
         synchronized (termList) {
             termList.add(pList);
         }
-        
+
     }
 
     /**
@@ -260,23 +259,23 @@ public class Document {
      */
     public void mapThreshold(float f, String... pAlgsNames) {
         List<String> names = Arrays.asList(pAlgsNames);
-        List<ListTerm> thesholdList=new ArrayList<>();
-        boolean aux=false;
+        List<ListTerm> thesholdList = new ArrayList<>();
+        boolean aux = false;
         if (names.size() > 0) {
-                for (ListTerm termL : termList) {
-                    aux=false;
-                    for (String name1 : names) {
-                        if(termL.getClass().equals(name1)){
-                            aux=true;
-                            List<Term> terms=TermListUtils.getThresholdedTermList(termL.getTermList(), f);
-                            thesholdList.add(new ListTerm(name1, terms));
-                        }
+            for (ListTerm termL : termList) {
+                aux = false;
+                for (String name1 : names) {
+                    if (termL.getClass().equals(name1)) {
+                        aux = true;
+                        List<Term> terms = TermListUtils.getThresholdedTermList(termL.getTermList(), f);
+                        thesholdList.add(new ListTerm(name1, terms));
                     }
-                    if(!aux){
-                      thesholdList.add(termL);
-                    }
-                }                        
-            termList=thesholdList;
+                }
+                if (!aux) {
+                    thesholdList.add(termL);
+                }
+            }
+            termList = thesholdList;
         }
     }
 
@@ -299,7 +298,7 @@ public class Document {
             PrintWriter printWriter = null;
             try {
                 printWriter = new PrintWriter(new File(pFolder + "/" + pDoc.name), "UTF-8");
-                
+
                 for (Topic topic : pDoc.topicList) {
                     printWriter.println(topic.getTopic() + "\t" + topic.getId() + "\t" + topic.getSourceTitle());
                 }
@@ -327,7 +326,7 @@ public class Document {
                 logger.error("Error while creating directories in or printing the file: " + pFolder, ex);
             }
         }
-        
+
     }
 
     /**
@@ -351,7 +350,7 @@ public class Document {
             top.setTopic(string.getTopic());
             top.setLabels(string.getLabelList());
             top.setDomainRelatedness(string.getDomainRelatedness());
-            
+
             List<Translation> transList = new ArrayList<>();
             HashMap<String, String> map = string.getTranslations();
             Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
@@ -362,22 +361,22 @@ public class Document {
                 trans.setText(pairs.getValue());
                 transList.add(trans);
             }
-            List<Link> linksIn=new ArrayList<>();
-            HashMap<Integer,Double> map3 = string.getLinksIn();
+            List<Link> linksIn = new ArrayList<>();
+            HashMap<Integer, Double> map3 = string.getLinksIn();
             Iterator<Map.Entry<Integer, Double>> it2 = map3.entrySet().iterator();
             while (it2.hasNext()) {
-                Map.Entry<Integer,Double> pairs = it2.next();
-                Link link=new Link();
+                Map.Entry<Integer, Double> pairs = it2.next();
+                Link link = new Link();
                 link.setId(pairs.getKey());
                 link.setRelatedness(pairs.getValue());
                 linksIn.add(link);
             }
-            List<Link> linksOut=new ArrayList<>();
-            HashMap<Integer,Double> map4 = string.getLinksOut();
+            List<Link> linksOut = new ArrayList<>();
+            HashMap<Integer, Double> map4 = string.getLinksOut();
             Iterator<Map.Entry<Integer, Double>> it3 = map4.entrySet().iterator();
             while (it3.hasNext()) {
-                Map.Entry<Integer,Double> pairs = it3.next();
-                Link link=new Link();
+                Map.Entry<Integer, Double> pairs = it3.next();
+                Link link = new Link();
                 link.setId(pairs.getKey());
                 link.setRelatedness(pairs.getValue());
                 linksOut.add(link);
@@ -407,6 +406,10 @@ public class Document {
             listRel.add(rel);
         }
         msg.setDomainTopics(listRel);
+        if (pFolder.equals("")) {
+            pFolder = System.getProperty("user.dir");
+
+        }
         if (Files.isDirectory(Paths.get(pFolder), LinkOption.NOFOLLOW_LINKS)) {
             FileWriter outFile = null;
             try {
@@ -455,9 +458,9 @@ public class Document {
                 }
             }
             logger.info(pDoc.path + "  Saved... ");
-            
+
         }
-        
+
     }
 
     /**
@@ -515,7 +518,7 @@ public class Document {
         msg.setDomainTopics(listRel);
         Gson son = new GsonBuilder().setPrettyPrinting().create();
         return (son.toJson(msg));
-        
+
     }
 
     /**
@@ -565,7 +568,7 @@ public class Document {
                 logger.error("Error converting the file to utf8", ex);
             }
         }
-        
+
     }
 
     /**
@@ -589,29 +592,29 @@ public class Document {
     public HashMap<Integer, String> getDomainTopics() {
         return domainTopics;
     }
-    
+
     /**
      *
      * @param pDomain
      */
-    public void setDomainTopics(HashMap<Integer,String> pDomain){
-       domainTopics=pDomain;
+    public void setDomainTopics(HashMap<Integer, String> pDomain) {
+        domainTopics = pDomain;
     }
-    
+
     static class Doc {
-        
+
         private String knowledgeSource;
-        
+
         private String name;
         private List<DomainRel> domainTopics;
-        
+
         private List<MsgTop> topics;
-        
+
         public Doc() {
             name = "";
             topics = new ArrayList<>();
         }
-        
+
         public void setName(String pName) {
             name = pName;
         }
@@ -667,9 +670,9 @@ public class Document {
             this.knowledgeSource = knowledgeSource;
         }
     }
-    
+
     static class MsgTop {
-        
+
         private List<String> labels;
         private List<Translation> translations;
         private String definition;
@@ -680,10 +683,9 @@ public class Document {
         private float domainRelatedness;
         private List<Link> linksIn;
         private List<Link> linksOut;
-                
-        
+
         public MsgTop() {
-            linksOut=new ArrayList<>();
+            linksOut = new ArrayList<>();
             linksIn = new ArrayList<>();
             labels = new ArrayList<>();
             translations = new ArrayList<>();
@@ -808,12 +810,12 @@ public class Document {
         }
 
         private void setLinksIn(List<Link> linksIn) {
-            this.linksIn=linksIn;
+            this.linksIn = linksIn;
         }
 
         private void setLinksOut(List<Link> linksOut) {
-            this.linksOut=linksOut;
-            
+            this.linksOut = linksOut;
+
         }
 
         /**
@@ -829,11 +831,13 @@ public class Document {
         public List<Link> getLinksOut() {
             return linksOut;
         }
-        
+
     }
-    static class Link{
-        private int id =-1;
-        private double relatedness =0;
+
+    static class Link {
+
+        private int id = -1;
+        private double relatedness = 0;
 
         /**
          * @return the id
@@ -863,15 +867,16 @@ public class Document {
             this.relatedness = relatedness;
         }
     }
+
     static class Translation {
-        
+
         private String lang;
         private String text;
-        
+
         public Translation() {
             lang = "";
             text = "";
-            
+
         }
 
         /**
@@ -901,11 +906,11 @@ public class Document {
         public void setText(String text) {
             this.text = text;
         }
-        
+
     }
-    
+
     static class Parent {
-        
+
         private int id;
         private String sourceTitle;
 
@@ -937,12 +942,12 @@ public class Document {
             this.sourceTitle = sourceTitle;
         }
     }
-    
+
     static class DomainRel {
-        
+
         private String title;
         private int id;
-        
+
         public DomainRel() {
             title = "";
             id = -1;
@@ -975,20 +980,20 @@ public class Document {
         public void setId(int id) {
             this.id = id;
         }
-        
+
     }
-    
+
     static class LiteDoc {
-        
+
         private String name;
         private List<String> sentenceList;
         private List<LinkedList<Token>> tokenizedSentenceList;
-        
+
         public LiteDoc(String pName, List<String> pSentenceList, List<LinkedList<Token>> pTokenizedSentenceList) {
             name = pName;
             sentenceList = pSentenceList;
             tokenizedSentenceList = pTokenizedSentenceList;
-            
+
         }
 
         /**

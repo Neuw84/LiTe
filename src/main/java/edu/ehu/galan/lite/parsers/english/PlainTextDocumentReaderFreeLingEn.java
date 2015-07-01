@@ -16,7 +16,6 @@ package edu.ehu.galan.lite.parsers.english;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import edu.ehu.galan.lite.algorithms.AbstractAlgorithm;
 import edu.ehu.galan.lite.model.Token;
 import edu.ehu.galan.lite.parsers.AbstractDocumentReader;
 import edu.ehu.galan.lite.utils.freeLingUtils.FreeLing2LidomFormatter;

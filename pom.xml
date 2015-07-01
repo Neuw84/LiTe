@@ -208,12 +208,6 @@
             <artifactId>kaflib-naf</artifactId>
             <version>1.0.0</version>
             <type>jar</type>
-        </dependency>       
-        <dependency>
-            <groupId>ixa</groupId>
-            <artifactId>ixa-pipe-chunk</artifactId>
-            <version>1.0c</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>es.ehu.si.ixa</groupId>
@@ -221,9 +215,15 @@
             <version>1.7.3</version>
         </dependency>
         <dependency>
-            <groupId>eus.ixa</groupId>
-            <artifactId>ixa-pipe-pos</artifactId>
-            <version>1.4.1A</version>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>1.6.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.carrot2</groupId>
+            <artifactId>morfologik-stemming</artifactId>
+            <version>1.10.0</version>
         </dependency>
     </dependencies>
     <reporting>

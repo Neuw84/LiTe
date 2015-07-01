@@ -126,12 +126,7 @@ public class Example {
             //measure domain relatedness
             relate.relate(doc);
             //save the results
-            String toJson = Document.getDocumentJson(doc);
-            try {
-                FileUtils.writeStringToFile(new File(doc.getName()), toJson);
-            } catch (IOException ex1) {
-                Logger.getLogger(WikiTerm.class.getName()).log(Level.SEVERE, null, ex1);
-            }
+            Document.saveJsonToDir("", doc);
         }
         //close wikiminer connection and caches
         helper.closeConnection();

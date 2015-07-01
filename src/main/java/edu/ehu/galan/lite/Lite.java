@@ -78,6 +78,7 @@ public class Lite {
                 + "see the documentation for see the available algorithms for each language");
         Option help = new Option("h", false, "print this message");
         Option resources = new Option("r", true, "the location of the lite resources folder");
+        Option output = new Option("o", true, "The directory where the results will be stored, by default the one where the vm has been launched");
         Option listAlgs = new Option("listAlgs", false, " Algorithm list names with the supported languages (remember that the cvalue will be processed chosen or not):\n"
                 + "===================================================\n"
                 + "tfidf => processes the TFIDF algorithm, process terms of the input document using the Wikipedia corpus as IDF (en,es)\n"
@@ -97,6 +98,7 @@ public class Lite {
         options.addOption(algorithms);
         options.addOption(help);
         options.addOption(listAlgs);
+        options.addOption(output);
         // automatically generate the help statement
         HelpFormatter formatter = new HelpFormatter();
         String[] s = new String[]{};
@@ -109,19 +111,27 @@ public class Lite {
                 if (!line.getOptionValue('l').equals("en") && !line.getOptionValue("l").equals("es")) {
                     System.out.println("Supported languages \"en\" or \"es\", however you may use the statistical algorithms via the API");
                 } else {
+                    String outputDir = "";
+                    if (line.hasOption('o')) {
+                        outputDir = line.getOptionValue('o');
+                    }
                     String lang = line.getOptionValue('l');
                     Corpus cor = new Corpus(line.getOptionValue('l'));
                     cor.loadCorpus(line.getOptionValue('c'), Document.SourceType.wikipedia);
                     String res = line.getOptionValue('r');
                     List<String> algs = Arrays.asList(line.getOptionValue('a').split(","));
                     System.out.println("Processing.... (it may take a while...)");
-                    runner(lang, res + File.separator, algs, cor);
+                    runner(lang, res + File.separator, algs, cor, outputDir);
                 }
             }
             if (line.hasOption('c') && line.hasOption('l') && line.hasOption('r')) {
                 if (!line.getOptionValue('l').equals("en") && !line.getOptionValue("l").equals("es")) {
                     System.out.println("Supported languages \"en\" or \"es\", however you may use the statistical algorithms via the API");
                 } else {
+                    String outputDir = "";
+                    if (line.hasOption('o')) {
+                        outputDir = line.getOptionValue('o');
+                    }
                     System.out.println("Processing with default algorithms (TFIDF/CValue).... (it may take a while...)");
                     Corpus cor = new Corpus(line.getOptionValue('l'));
                     String res = line.getOptionValue('r');
@@ -140,7 +150,7 @@ public class Lite {
                             break;
                         }
                     }
-                    runner(lang, res + File.separator, algos, cor);
+                    runner(lang, res + File.separator, algos, cor, outputDir);
                 }
             } else if (line.hasOption("h")) {
                 formatter.printHelp("LiTe: a language indepent term extractor", options);
@@ -159,7 +169,7 @@ public class Lite {
 
     }
 
-    private static void runner(String lang, String resources, List<String> algs, Corpus corpus) {
+    private static void runner(String lang, String resources, List<String> algs, Corpus corpus, String outDir) {
         System.setProperty("net.sf.ehcache.enableShutdownHook", "true");
         if (CacheManager.getCacheManager("ehcacheLitet.xml") == null) {
             CacheManager.create("ehcacheLitet.xml");
@@ -278,14 +288,14 @@ public class Lite {
             //measure domain relatedness
             relate.relate(doc);
             //save the results
-            System.out.println(Document.getDocumentJson(doc));
+            Document.saveJsonToDir(outDir, doc);
         }
         if (props.getProperty("localMode").equals("true")) {
             helper.closeWikipedia();
         } else {
             helper.closeConnection();
         }
-        
+
         CacheManager.getInstance().shutdown();
         System.exit(0);
     }

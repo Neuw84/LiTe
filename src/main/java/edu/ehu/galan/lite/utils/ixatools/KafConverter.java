@@ -20,7 +20,7 @@ package edu.ehu.galan.lite.utils.ixatools;
 
 import edu.ehu.galan.lite.model.Document;
 import edu.ehu.galan.lite.model.Token;
-import eus.ixa.ixa.pipe.pos.Morpheme;
+import edu.ehu.galan.lite.utils.ixatools.pos.pos.Morpheme;
 import ixa.kaflib.Chunk;
 import ixa.kaflib.KAFDocument;
 import ixa.kaflib.Term;
