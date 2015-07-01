@@ -26,6 +26,7 @@ For the Disambiguation and Linker part: the [Wikiminer](http://www.sciencedirect
 
 ###TODO's
 - .....
+
 ###Contact information
 ````shell
 Angel Conde
