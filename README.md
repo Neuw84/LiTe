@@ -8,7 +8,7 @@ As the installation procedure requires some efforts, first access to the Web dem
 For usage and installation see the [Wiki](https://github.com/Neuw84/LiTe/wiki)
 
 LiTe main aim is to extract terms from texts and link/disambiguate them to Wikipedia using these algorithms:
-* **TFIDF**: using as corpus the Wikipedia
+* **TFIDF**: processes the [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)using as corpus the Wikipedia
 * **CValue**: see the  [Github proyect](https://github.com/Neuw84/CValue-TermExtraction)
 * **Shallow Parsing Grammar**: see the reference paper
 * **RAKE**: see the [Github proyect](https://github.com/Neuw84/RAKE-Java)
