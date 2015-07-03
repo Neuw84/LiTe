@@ -95,8 +95,7 @@ public class Lite {
         options.addOption(resources);
         options.addOption(corpus);
         options.addOption(language);
-        options.addOption(algorithms);
-        options.addOption(help);
+        options.addOption(algorithms);        
         options.addOption(listAlgs);
         options.addOption(output);
         // automatically generate the help statement
@@ -295,7 +294,6 @@ public class Lite {
         } else {
             helper.closeConnection();
         }
-
         CacheManager.getInstance().shutdown();
         System.exit(0);
     }

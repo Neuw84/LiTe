@@ -132,5 +132,6 @@ public class Example {
         helper.closeConnection();
         cache.dispose();
         CacheManager.getInstance().shutdown();
+        System.exit(0);
     }
 }
