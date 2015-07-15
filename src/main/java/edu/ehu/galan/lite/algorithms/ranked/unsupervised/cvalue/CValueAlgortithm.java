@@ -21,9 +21,9 @@ import edu.ehu.galan.lite.model.Term;
 import edu.ehu.galan.lite.algorithms.ranked.unsupervised.cvalue.filters.ILinguisticFilter;
 import edu.ehu.galan.lite.model.Document;
 import edu.ehu.galan.lite.model.ListTerm;
-import java.util.Comparator;
+import static java.util.Comparator.*;
 import java.util.List;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.toList;
 
 /**
  * CValue implementation based on Frantzi, K., Ananiadou, S. and Mima, H. (2000)
@@ -69,7 +69,7 @@ public class CValueAlgortithm extends AbstractAlgorithm {
             CValue cvalue = new CValue(candList);
             cvalue.processCValue();
             candList = cvalue.getCandList();
-            List<Term> termLi = candList.stream().map(cand -> new Term(cand.getText().trim(), cand.getCValue())).sorted(Comparator.comparing(Term::getScore)).collect(Collectors.toList());
+            List<Term> termLi = candList.stream().map(cand -> new Term(cand.getText().trim(), cand.getCValue())).sorted(comparing(Term::getScore)).collect(toList());
             doc.addListTerm(new ListTerm(this.getName(), termLi));
         } else {
             System.out.println("A lingustic filter is needed for CValue algorithm");

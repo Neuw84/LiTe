@@ -26,7 +26,6 @@ import edu.ehu.galan.lite.stemmers.IStemmer;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -34,8 +33,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-
-import java.util.stream.Collectors;
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.toList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,7 +97,7 @@ public class TFIDFAlgorithm extends AbstractAlgorithm {
         }
         method.setCorpusData(numTotalWords, tfTermList);
         method.computeTFIDF(tfTermList, numTotalWords);
-        List<Term> terms = tfTermList.parallelStream().filter(t -> t.tfidf != -1).map(t -> new Term(t.word.trim(), (float) t.tfidf)).sorted((t1, t2) -> t1.getScore() > t2.getScore() ? -1 : t1.getScore() == t2.getScore() ? 0 : 1).collect(Collectors.toList());
+        List<Term> terms = tfTermList.parallelStream().filter(t -> t.tfidf != -1).map(t -> new Term(t.word.trim(), (float) t.tfidf)).sorted(comparing(Term::getScore)).collect(toList());
         tfTermList.clear(); //memory leak if we do not clean here
         getDoc().addListTerm(new ListTerm(this.getName(), terms));
         termList.clear();
