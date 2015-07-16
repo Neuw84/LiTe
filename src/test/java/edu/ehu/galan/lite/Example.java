@@ -90,7 +90,7 @@ public class Example {
             standardStop = Files.readAllLines(Paths.get(resources + "lite/stopWordLists/standardStopList"), StandardCharsets.UTF_8);
 
         } catch (IOException e1x) {
-            Logger.getLogger(WikiTerm.class.getName()).log(Level.SEVERE, null, e1x);
+            Logger.getLogger(Example.class.getName()).log(Level.SEVERE, null, e1x);
         }
         //initialize Wikiminer helper (class that interacts with Wikiminer services)
         WikiminnerHelper helper = WikiminnerHelper.getInstance(resources);
