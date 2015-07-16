@@ -36,6 +36,7 @@ import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.explore.GSonExplore;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.listRelate.Comparison;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.listRelate.Comparisons;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.listSearch.ListSearch;
+import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.markUp.GSonMarkUp;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.search.Label;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.search.Search;
 import edu.ehu.galan.lite.utils.wikiminer.gsonReaders.search.Sense;
@@ -334,6 +335,7 @@ public class WikiminnerHelper {
 
     /**
      * Given a Wikipedia page title it returns the identifier associated with it
+     *
      * @param term1
      * @param pLang
      * @return
@@ -435,10 +437,10 @@ public class WikiminnerHelper {
 
     /**
      * Return a list of labels for a Wikipedia article (only remote mode)
+     *
      * @param wikiId
      * @return
      */
-    
     public List<String> exploreLabels(int wikiId) {
         FileOutputStream out = null;
         try {
@@ -486,7 +488,6 @@ public class WikiminnerHelper {
      * @param termList
      * @return
      */
-    
     public List<Topic> parallelSearch(List<Term> termList) {
         List<String> lis = new ArrayList<>();
         long timeStart = System.nanoTime();
@@ -653,7 +654,7 @@ public class WikiminnerHelper {
 
     /**
      * Relate a list of topics with the important topics of the domain
-     * 
+     *
      * @param pTtopicList
      * @param cGold
      * @param relatedness
@@ -1302,6 +1303,171 @@ public class WikiminnerHelper {
 
     }
 
+    /**
+     *
+     * @param pDoc
+     * @param maxImagewidth
+     * @param maxImageheight
+     */
+    public void getMarkUpImages(Document pDoc,int maxImagewidth, int maxImageheight) {
+        caches.initializeId2TopicMap(pDoc);
+//        for(Document doc: pCorpus.getDocQueue()){
+        if (!localMode) {
+            HashMap<Integer, Topic> cacheId = caches.getId2TopicMap();
+            List<Topic> topicList = pDoc.getTopicList();
+            Gson son = new GsonBuilder().create();
+            int i = 0;
+            List<Integer> invalidList = new ArrayList<>();
+            i = 0;
+            GSonMarkUp ex;
+            try {
+                logger.info("Getting markup from the mapped articles:");
+                ProgressTracker tracker = new ProgressTracker((topicList.size() / maxTopics) + 1, "....", this.getClass());
+                while (i < topicList.size()) {
+                    String req = wikiminerUrl + "/services/exploreArticle?ids=";
+                    String cacheElem = "";
+                    int sum = 0;
+                    for (; i < topicList.size(); i++) {
+                        int id = (topicList.get(i).getId());
+                        cacheElem += id;
+//                    if(id==18105){
+//                        System.out.println(pTtopicList.get(i).toString());
+//                    }
+                        req = req + id + ",";
+                        sum++;
+                        if (sum == maxTopics/2) {
+                            break;
+                        }
+                    }
+                    req = req.substring(0, req.length() - 1);
+                    Element elem = cache.get(cacheElem);
+                    HttpGet getRequest = null;
+                    if (elem == null) {
+                        getRequest = new HttpGet(req + "&wikipedia=" + lang + "&markUp&images&maxImageWidth="+maxImagewidth+"&maxImageHeight="+maxImageheight+"&responseFormat=JSON");
+                        getRequest.addHeader("accept", "application/json");
+                        getRequest.addHeader("Accept-Encoding", "gzip");
+                        HttpResponse response = httpClient.execute(getRequest);
+                        GzipDecompressingEntity entity = new GzipDecompressingEntity(response.getEntity());
+                        String jsonText = EntityUtils.toString(entity, StandardCharsets.UTF_8);
+                        EntityUtils.consume(entity);
+                        ex = son.fromJson(jsonText, GSonMarkUp.class);
+                        elem = new Element(cacheElem, ex);
+                        cache.put(elem);
+                    } else {
+                        ex = (GSonMarkUp) elem.getObjectValue();
+                    }
+                    List<edu.ehu.galan.lite.utils.wikiminer.gsonReaders.markUp.ArticleList> artiList = ex.getArticleList();
+                    int count = 0;
+                    for (edu.ehu.galan.lite.utils.wikiminer.gsonReaders.markUp.ArticleList articleList : artiList) {
+                        int id = articleList.getId();
+                        if (cacheId.containsKey(id)) {
+                            Topic top = cacheId.get(id);
+                            count++;
+                            addInfo2ArticleMarkUp(top, articleList, cacheId);
+                            //break; if more are disambiguated with the same we get errors
+                            //....
+                        }
+                    }
+                }
+            } catch (IOException ex1) {
+                logger.error(null, ex1);
+            }
+            //}
+        } else {
+            if (wikipedia != null) {
+                
+                logger.info("Getting Wiki data from the mapped articles:");
+                List<Topic> topicList = pDoc.getTopicList();
+
+                List<Integer> validList = new ArrayList<>();
+                for (Topic top : topicList) {
+                    validList.add(top.getId());
+                }
+                ProgressTracker tracker = new ProgressTracker((validList.size()) + 1, "Getting data....", this.getClass());
+                Integer[] ids = validList.toArray(new Integer[validList.size()]);
+                List<Integer> nullList = new ArrayList<>();
+                List<Integer> invalidList = new ArrayList<>();
+                List<Article> articleList = new ArrayList<>();
+                List<Category> catList = new ArrayList<>();
+                ArticleComparer artComparer = null;
+                try {
+                    artComparer = new ArticleComparer(wikipedia);
+                } catch (Exception ex) {
+                    logger.error("Error getting article comparer for this wikipedia");
+                }
+                if (artComparer == null) {
+                    logger.error("No comparisons available for this Wikipedia");
+                }
+
+                for (int i = 0; i < ids.length; i++) {
+                    Integer integer = ids[i];
+                    org.wikipedia.miner.model.Page pageIds = wikipedia.getPageById(integer);
+                    if (pageIds == null) {
+                        nullList.add(integer);
+                    }
+                    switch (pageIds.getType()) {
+                        case disambiguation:
+                            break;
+                        case article:
+                            articleList.add((Article) pageIds);
+                            break;
+                        default:
+                            if (pageIds.getType() == org.wikipedia.miner.model.Page.PageType.category) {
+                                catList.add((Category) pageIds);
+                            } else {
+                                nullList.add(integer);
+                            }
+                    }
+
+                }
+                for (Article art : articleList) {
+                    Topic top = caches.getId2TopicMap().get(art.getId());
+                    top.setIsIndividual(true);
+
+                    String definition = null;
+                    definition = art.getFirstParagraphMarkup();
+                    top.setSourceDef(definition);
+                    if (definition == null) {
+                        top.setSourceDef("");
+                    }
+                    Article.Label[] labels = art.getLabels();
+                    int total = 0;
+                    for (Article.Label lbl : labels) {
+                        total += lbl.getLinkOccCount();
+                    }
+                    for (Article.Label lbl : labels) {
+                        long occ = lbl.getLinkOccCount();
+                        if (occ > 0) {
+                            top.addLabel(lbl.getText());
+                        }
+                    }
+                    TreeMap<String, String> translations = art.getTranslations();
+                    for (Map.Entry<String, String> entry : translations.entrySet()) {
+                        top.addTranslation(entry.getKey(), entry.getValue());
+                    }
+                    Category[] parents = art.getParentCategories();
+                    // logger.info("retrieving parents from " + parents.length + " total");
+                    for (Category parent : parents) {
+                        top.addParentCagegory(parent.getId(), parent.getTitle());
+                    }
+                    int start = 0;
+                    int max = 300;
+                    if (max <= 0) {
+                        max = Integer.MAX_VALUE;
+                    } else {
+                        max += start;
+                    }
+             
+                    tracker.update();
+
+                }
+
+            }
+        }
+        caches.clearId2TopicMap();
+
+    }
+
     private void addInfo2Article(Topic topic, ArticleList articleList, HashMap<Integer, Topic> pIdCache) {
         topic.setIsIndividual(true);
 
@@ -1482,6 +1648,12 @@ public class WikiminnerHelper {
         }
 
         return titles;
+    }
+
+    private void addInfo2ArticleMarkUp(Topic top, edu.ehu.galan.lite.utils.wikiminer.gsonReaders.markUp.ArticleList articleList, HashMap<Integer, Topic> cacheId) {
+         top.setWikiMarkUp(articleList.getMarkup());
+         articleList.getImages().stream().forEach(ac -> top.addImage(ac.getUrl()));
+    
     }
 
 }

@@ -491,4 +491,12 @@ public class Topic implements Serializable {
     public HashMap<Integer, Double> getLinksOut() {
         return linksOut;
     }
+
+    public void setWikiMarkUp(String markup) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void addImage(String url) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
