@@ -246,7 +246,9 @@ public class WikiminnerHelper {
      * Closes the connection to the Wikiminer Rest Services when using Wikiminer in remote mode
      */
     public void closeConnection() {
-        httpClient.getConnectionManager().shutdown();
+        if (httpClient != null) {
+            httpClient.getConnectionManager().shutdown();
+        }
     }
 
     /**
@@ -257,7 +259,6 @@ public class WikiminnerHelper {
         httpClient = null;
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
-
     }
 
     /**
@@ -1309,7 +1310,7 @@ public class WikiminnerHelper {
      * @param maxImagewidth
      * @param maxImageheight
      */
-    public void getMarkUpImages(Document pDoc,int maxImagewidth, int maxImageheight) {
+    public void getMarkUpImages(Document pDoc, int maxImagewidth, int maxImageheight) {
         caches.initializeId2TopicMap(pDoc);
 //        for(Document doc: pCorpus.getDocQueue()){
         if (!localMode) {
@@ -1335,7 +1336,7 @@ public class WikiminnerHelper {
 //                    }
                         req = req + id + ",";
                         sum++;
-                        if (sum == maxTopics/2) {
+                        if (sum == maxTopics / 2) {
                             break;
                         }
                     }
@@ -1343,7 +1344,7 @@ public class WikiminnerHelper {
                     Element elem = cache.get(cacheElem);
                     HttpGet getRequest = null;
                     if (elem == null) {
-                        getRequest = new HttpGet(req + "&wikipedia=" + lang + "&markUp&images&maxImageWidth="+maxImagewidth+"&maxImageHeight="+maxImageheight+"&responseFormat=JSON");
+                        getRequest = new HttpGet(req + "&wikipedia=" + lang + "&markUp&images&maxImageWidth=" + maxImagewidth + "&maxImageHeight=" + maxImageheight + "&responseFormat=JSON");
                         getRequest.addHeader("accept", "application/json");
                         getRequest.addHeader("Accept-Encoding", "gzip");
                         HttpResponse response = httpClient.execute(getRequest);
@@ -1375,7 +1376,7 @@ public class WikiminnerHelper {
             //}
         } else {
             if (wikipedia != null) {
-                
+
                 logger.info("Getting Wiki data from the mapped articles:");
                 List<Topic> topicList = pDoc.getTopicList();
 
@@ -1457,7 +1458,7 @@ public class WikiminnerHelper {
                     } else {
                         max += start;
                     }
-             
+
                     tracker.update();
 
                 }
@@ -1651,9 +1652,9 @@ public class WikiminnerHelper {
     }
 
     private void addInfo2ArticleMarkUp(Topic top, edu.ehu.galan.lite.utils.wikiminer.gsonReaders.markUp.ArticleList articleList, HashMap<Integer, Topic> cacheId) {
-         top.setWikiMarkUp(articleList.getMarkup());
-         articleList.getImages().stream().forEach(ac -> top.addImage(ac.getUrl()));
-    
+        top.setWikiMarkUp(articleList.getMarkup());
+        articleList.getImages().stream().forEach(ac -> top.addImage(ac.getUrl()));
+
     }
 
 }
